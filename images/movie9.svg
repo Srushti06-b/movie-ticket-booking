@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Speedline - animated action poster -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="g9" x1="0" x2="1">
+      <stop offset="0%" stop-color="#2b0b0f"/>
+      <stop offset="100%" stop-color="#11040b"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 36px "Poppins", Arial, sans-serif; fill:#fff; }
+      .meta { font: 300 14px "Poppins", Arial, sans-serif; fill:#ffb4a2; }
+      .speed { fill:#ffb4a2; opacity:0.12; }
+    </style>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#g9)"/>
+
+  <!-- motion streaks -->
+  <g stroke="#ffb4a2" stroke-width="2" stroke-opacity="0.1" fill="none">
+    <path d="M-200 420 L800 300">
+      <animate attributeName="d" dur="7s" repeatCount="indefinite"
+        values="M-200 420 L800 300; M-200 400 L800 280; M-200 420 L800 300"/>
+    </path>
+    <path d="M-200 460 L800 360">
+      <animate attributeName="d" dur="6s" repeatCount="indefinite"
+        values="M-200 460 L800 360; M-200 440 L800 340; M-200 460 L800 360"/>
+    </path>
+  </g>
+
+  <!-- racing silhouette -->
+  <g transform="translate(300,420)">
+    <rect x="-160" y="-80" width="320" height="160" rx="20" fill="#000" opacity="0.12"/>
+    <path d="M-120 20 C -80 -40 80 -40 120 20 C 80 -4 -80 -4 -120 20 z" fill="#ffb4a2" opacity="0.95"/>
+    <animateTransform attributeName="transform" type="translate" values="280,420;300,420;320,420;300,420" dur="4s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="118" class="title">SPEEDLINE</text>
+  <text x="48" y="160" class="meta">Action • 1h 50m • ⭐ 7.6</text>
+
+  <!-- poster card -->
+  <rect x="36" y="220" width="528" height="420" rx="12" fill="#12060a" stroke="#ffffff" stroke-opacity="0.02"/>
+
+  <g transform="translate(48,300)" fill="#ffd4c0">
+    <text x="0" y="40" font-size="14">Release: 2026-07-02</text>
+    <text x="0" y="70" font-size="14">Language: English</text>
+    <text x="0" y="100" font-size="14">Duration: 1h 50m</text>
+  </g>
+
+  <!-- speed contrast flare -->
+  <rect x="36" y="360" width="528" height="6" fill="#ff6a3a" opacity="0.06">
+    <animate attributeName="opacity" values="0.06;0.18;0.06" dur="1.6s" repeatCount="indefinite"/>
+  </rect>
+</svg>
