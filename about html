@@ -1,0 +1,144 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CinemaX - Book Tickets</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="booking-page">
+  <header class="nav-wrap">
+    <div class="container nav">
+      <a class="logo" href="index.html">CinemaX</a>
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="booking.html" class="active">Book Tickets</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button id="nav-toggle" class="nav-toggle"><i class="fa fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main class="container booking-main">
+    <section class="booking-left glass">
+      <h2>Book Your Seats</h2>
+      <form id="bookingForm" class="booking-form" autocomplete="off">
+        <div class="form-row">
+          <label for="custName">Customer Name</label>
+          <input id="custName" name="custName" type="text" placeholder="Full name" required>
+        </div>
+        <div class="form-row two">
+          <div>
+            <label for="custEmail">Email</label>
+            <input id="custEmail" name="custEmail" type="email" placeholder="name@example.com" required>
+          </div>
+          <div>
+            <label for="custPhone">Phone</label>
+            <input id="custPhone" name="custPhone" type="tel" placeholder="1234567890" required pattern="[0-9]{7,15}">
+          </div>
+        </div>
+        <div class="form-row two">
+          <div>
+            <label for="selectMovie">Select Movie</label>
+            <select id="selectMovie"></select>
+          </div>
+          <div>
+            <label for="selectTheatre">Select Theatre</label>
+            <select id="selectTheatre">
+              <option value="PVR Downtown">PVR Downtown</option>
+              <option value="Cinepolis Plaza">Cinepolis Plaza</option>
+              <option value="Galaxy Cinemas">Galaxy Cinemas</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row two">
+          <div>
+            <label for="selectDate">Select Date</label>
+            <input id="selectDate" type="date" min="">
+          </div>
+          <div>
+            <label for="selectTime">Select Time</label>
+            <select id="selectTime">
+              <option>10:00 AM</option>
+              <option>1:00 PM</option>
+              <option>4:00 PM</option>
+              <option>7:00 PM</option>
+              <option>10:00 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row seats-row">
+          <h3>Choose Seats</h3>
+          <div id="seatLegend" class="legend">
+            <span><i class="seat available"></i> Available</span>
+            <span><i class="seat selected"></i> Selected</span>
+            <span><i class="seat booked"></i> Booked</span>
+          </div>
+          <div id="seatMap" class="seat-map" aria-label="Seat selection"></div>
+          <div class="selected-info muted">Selected Seats: <span id="selectedSeats">None</span></div>
+        </div>
+
+        <div class="form-row">
+          <label for="numTickets">Number of Tickets</label>
+          <input id="numTickets" type="number" min="1" max="12" value="1">
+        </div>
+
+        <div class="form-row">
+          <button id="confirmBtn" class="btn btn-gradient" type="button">Proceed to Payment</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="booking-right">
+      <div class="summary glass" id="paymentSummary">
+        <h3>Payment Summary</h3>
+        <div class="summary-body">
+          <p><strong>Movie:</strong> <span id="sumMovie">-</span></p>
+          <p><strong>Theatre:</strong> <span id="sumTheatre">-</span></p>
+          <p><strong>Date:</strong> <span id="sumDate">-</span></p>
+          <p><strong>Time:</strong> <span id="sumTime">-</span></p>
+          <p><strong>Seats:</strong> <span id="sumSeats">-</span></p>
+          <hr>
+          <p><strong>Ticket Price:</strong> <span id="sumPrice">₹0</span></p>
+          <p><strong>GST (18%):</strong> <span id="sumGst">₹0</span></p>
+          <h3 class="total">Total: <span id="sumTotal">₹0</span></h3>
+          <button id="finalizeBtn" class="btn btn-cta" disabled>Confirm Booking</button>
+        </div>
+      </div>
+
+      <div id="loading" class="loading" hidden>
+        <div class="spinner"></div>
+        <p>Processing booking...</p>
+      </div>
+
+      <div id="confirmation" class="confirmation glass hidden">
+        <h3>Booking Confirmed</h3>
+        <p class="muted">Thank you! Save or print your ticket.</p>
+        <div id="confDetails"></div>
+        <div class="conf-actions">
+          <button id="printTicket" class="btn">Download Ticket</button>
+          <button id="newBooking" class="btn small">Book Another</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer simple">
+    <div class="container foot-inner">
+      <div>
+        <h3>CinemaX</h3>
+        <p class="muted">Enjoy the show!</p>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year3"></span> CinemaX</div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
