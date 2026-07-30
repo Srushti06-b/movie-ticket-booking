@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Galactic Quest - animated sci-fi poster -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <radialGradient id="space" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#091126"/>
+      <stop offset="60%" stop-color="#071028"/>
+      <stop offset="100%" stop-color="#02060b"/>
+    </radialGradient>
+
+    <linearGradient id="neb" x1="0" x2="1">
+      <stop offset="0%" stop-color="#2ec1ff"/>
+      <stop offset="50%" stop-color="#8b5cff"/>
+      <stop offset="100%" stop-color="#ff6a9e"/>
+    </linearGradient>
+
+    <filter id="blurme"><feGaussianBlur stdDeviation="18" result="b"/></filter>
+
+    <style>
+      .title { font: 700 40px/1 "Poppins", Arial, sans-serif; fill: #e6f8ff; }
+      .cap { font: 600 14px "Poppins", Arial, sans-serif; fill: #bfe9ff; }
+      .sci { font: 300 16px "Poppins", Arial, sans-serif; fill:#cfeeff; }
+    </style>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#space)"/>
+
+  <!-- drifting nebula blobs -->
+  <g filter="url(#blurme)" opacity="0.55">
+    <circle cx="120" cy="180" r="120" fill="url(#neb)">
+      <animate attributeName="cx" values="120;140;120" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="120;140;120" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="470" cy="260" r="90" fill="#8b5cff">
+      <animate attributeName="cy" values="260;220;260" dur="14s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- stars -->
+  <g fill="#fff" opacity="0.9">
+    <circle cx="80" cy="40" r="1.6"><animate attributeName="opacity" values="0.9;0.2;0.9" dur="3s" repeatCount="indefinite"/></circle>
+    <circle cx="200" cy="100" r="1.2"><animate attributeName="opacity" values="0.9;0.05;0.9" dur="4s" repeatCount="indefinite"/></circle>
+    <circle cx="540" cy="80" r="1.8"><animate attributeName="opacity" values="0.9;0.15;0.9" dur="5s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- spaceship silhouette moving -->
+  <g transform="translate(300,380)">
+    <g id="ship" transform="translate(-0,0) scale(1)">
+      <path d="M-80 10 L-40 -30 L0 6 L40 -30 L80 10 L40 20 L0 -4 L-40 20 z" fill="#e6f8ff" opacity="0.92"/>
+      <ellipse cx="0" cy="20" rx="60" ry="12" fill="#2ec1ff" opacity="0.14"/>
+    </g>
+    <animateTransform xlink:href="#ship" attributeName="transform" type="translate" values="-100,0;0,0;100,0;-100,0" dur="9s" repeatCount="indefinite"/>
+    <animateTransform xlink:href="#ship" attributeName="transform" type="scale" additive="sum" values="0.92;1;0.92" dur="9s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="118" class="title">GALACTIC</text>
+  <text x="48" y="160" class="title">QUEST</text>
+
+  <text x="48" y="220" class="sci">A cosmic adventure beyond the stars</text>
+
+  <!-- poster frame -->
+  <rect x="36" y="220" width="528" height="420" rx="12" fill="#03061a" stroke="#ffffff" stroke-opacity="0.03"/>
+
+  <!-- details block with animated comet -->
+  <g transform="translate(48,660)">
+    <text class="cap">Sci‑Fi • 2h 25m • ⭐ 8.6</text>
+    <text x="0" y="26" class="sci">Release: 2026-06-01 • Language: English</text>
+    <g transform="translate(420,-48)">
+      <circle cx="0" cy="0" r="8" fill="#ffd6a5" opacity="0.95"/>
+      <path d="M -30 -6 L -8 0" stroke="#ffd6a5" stroke-width="3" stroke-linecap="round" opacity="0.85">
+        <animate attributeName="d" values="M -30 -6 L -8 0; M -80 -6 L -8 0; M -30 -6 L -8 0" dur="3s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+</svg>
