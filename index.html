@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CinemaX - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="home">
+  <header class="nav-wrap">
+    <div class="container nav">
+      <a class="logo" href="index.html">CinemaX</a>
+      <nav id="main-nav" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="booking.html">Book Tickets</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button id="nav-toggle" class="nav-toggle"><i class="fa fa-bars"></i></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="background-image: linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.9)), url('images/cinema-bg.jpg');">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Welcome to CinemaX</h1>
+          <p>Your premium online movie ticketing experience — fast, beautiful, and secure.</p>
+          <div class="hero-cta">
+            <a class="btn btn-gradient" href="movies.html">Explore Movies</a>
+            <a class="btn btn-outline" href="booking.html">Book Now</a>
+          </div>
+        </div>
+        <div class="hero-featured">
+          <div class="featured-card glass">
+            <img src="images/movie1.svg" alt="Featured" />
+            <div class="card-info">
+              <h4>Starlight Saga</h4>
+              <p class="muted">Action • 2h 10m</p>
+              <a class="btn small" href="booking.html?movieId=1">Book Ticket</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container featured-movies" id="featured">
+      <h2>Featured Movies</h2>
+      <div class="grid" id="home-movies">
+        <!-- JS will render a few featured cards -->
+      </div>
+    </section>
+
+    <section class="container extras">
+      <div class="grid-3">
+        <div class="feature glass">
+          <i class="fa fa-film fa-2x"></i>
+          <h3>Latest Releases</h3>
+          <p>Curated list of box-office smash hits and indie gems.</p>
+        </div>
+        <div class="feature glass">
+          <i class="fa fa-ticket-alt fa-2x"></i>
+          <h3>Easy Booking</h3>
+          <p>Pick a seat, choose a showtime, and you're done — no account needed.</p>
+        </div>
+        <div class="feature glass">
+          <i class="fa fa-shield-alt fa-2x"></i>
+          <h3>Secure Payment</h3>
+          <p>Simulated payment flow and printable tickets for convenience.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container foot-inner">
+      <div>
+        <h3>CinemaX</h3>
+        <p class="muted">Made with ♥ — College project demo.</p>
+      </div>
+      <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> CinemaX. All rights reserved.</div>
+    <a id="backTop" class="back-top" title="Back to top"><i class="fa fa-chevron-up"></i></a>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
