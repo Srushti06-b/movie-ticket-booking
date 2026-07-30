@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#1e1f47"/><stop offset="1" stop-color="#3a0b0b"/></linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g1)"/>
+  <g fill="#fff" font-family="Poppins, sans-serif">
+    <text x="30" y="120" font-size="36" font-weight="700">STARLIGHT</text>
+    <text x="30" y="160" font-size="36" font-weight="700">SAGA</text>
+    <rect x="30" y="200" width="540" height="380" rx="14" fill="#0b1220"/>
+    <text x="40" y="260" font-size="20" fill="#ffb4b4">Action • Sci-Fi</text>
+    <text x="40" y="300" font-size="16" fill="#9aa6b2">Release: 2026-03-15</text>
+  </g>
+</svg>
