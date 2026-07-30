@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aurora - animated adventure poster -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="aur" x1="0" x2="1">
+      <stop offset="0%" stop-color="#081223"/>
+      <stop offset="50%" stop-color="#07273a"/>
+      <stop offset="100%" stop-color="#02101a"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#9ad6ff" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#c4a7ff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffb3cc" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .title { font: 700 40px "Poppins", Arial, sans-serif; fill:#e6f7ff; }
+      .meta { font: 300 14px "Poppins", Arial, sans-serif; fill:#9ad6ff; }
+    </style>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#aur)"/>
+
+  <!-- animated aurora ribbons -->
+  <g opacity="0.9" fill="none" stroke-linecap="round" stroke-width="20">
+    <path stroke="url(#aura)" d="M-200 320 C 80 240 220 420 520 340">
+      <animate attributeName="d" dur="8s" repeatCount="indefinite"
+        values="
+        M-200 320 C 80 240 220 420 520 340;
+        M-200 360 C 100 260 240 400 520 360;
+        M-200 320 C 80 240 220 420 520 340"/>
+    </path>
+    <path stroke="#9ad6ff" stroke-opacity="0.12" d="M-200 380 C 120 320 240 460 540 380">
+      <animate attributeName="d" dur="10s" repeatCount="indefinite"
+        values="
+        M-200 380 C 120 320 240 460 540 380;
+        M-200 350 C 100 300 260 420 540 400;
+        M-200 380 C 120 320 240 460 540 380"/>
+    </path>
+  </g>
+
+  <!-- mountain silhouette -->
+  <g transform="translate(0,420)" fill="#051423">
+    <path d="M0 220 L80 120 L160 220 L240 120 L320 220 L400 90 L480 220 L600 120 L600 400 L0 400 z" opacity="0.98"/>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="118" class="title">AURORA</text>
+  <text x="48" y="160" class="meta">Adventure • 2h 05m • ⭐ 8.0</text>
+
+  <!-- poster card -->
+  <rect x="36" y="220" width="528" height="420" rx="12" fill="#07101a" stroke="#ffffff" stroke-opacity="0.02"/>
+
+  <g transform="translate(48,300)" fill="#cfeeff">
+    <text x="0" y="40" font-size="14">Release: 2026-03-01</text>
+    <text x="0" y="68" font-size="14">Language: English</text>
+  </g>
+
+  <!-- shooting star -->
+  <g transform="translate(80,120)" fill="#ffd6a5">
+    <circle cx="0" cy="0" r="5" opacity="0.95">
+      <animate attributeName="cx" values="0;480" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="0;280" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M -20 -6 L -4 0" stroke="#ffd6a5" stroke-width="3" stroke-linecap="round" opacity="0.85">
+      <animate attributeName="d" values="M -20 -6 L -4 0; M -120 -6 L -4 0; M -20 -6 L -4 0" dur="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>
