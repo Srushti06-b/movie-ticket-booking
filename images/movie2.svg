@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Moonlit Melody - animated SVG poster -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0%" stop-color="#1b1a2f">
+        <animate attributeName="offset" values="0%;6%;0%" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#2b1640">
+        <animate attributeName="offset" values="50%;56%;50%" dur="6s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#071124">
+        <animate attributeName="offset" values="100%;106%;100%" dur="6s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <radialGradient id="moonGlow" cx="50%" cy="22%" r="30%">
+      <stop offset="0%" stop-color="#fff9e6" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#fff9e6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#fff9e6" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="fuzzy" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feBlend in="SourceGraphic" in2="b"/>
+    </filter>
+
+    <style>
+      .title { font: 700 44px/1 "Poppins", Arial, sans-serif; fill: #fff; letter-spacing: 1px; }
+      .subtitle { font: 300 18px/1 "Poppins", Arial, sans-serif; fill: #ffd8f0; opacity:0.9; }
+      .tag { font: 600 14px/1 "Poppins", Arial, sans-serif; fill:#ffd1e8; }
+      .bokeh { fill: #ffd8f0; opacity: 0.06; }
+    </style>
+  </defs>
+
+  <!-- animated background gradient -->
+  <rect width="600" height="800" fill="url(#g2)"/>
+
+  <!-- moving bokeh circles -->
+  <g filter="url(#fuzzy)">
+    <circle class="bokeh" cx="120" cy="140" r="90">
+      <animate attributeName="cx" values="120;140;120" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="140;160;140" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="90;110;90" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="bokeh" cx="460" cy="220" r="70">
+      <animate attributeName="cx" values="460;420;460" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="70;85;70" dur="11s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="bokeh" cx="330" cy="520" r="50">
+      <animate attributeName="cy" values="520;560;520" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="50;65;50" dur="10s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- moon with subtle glow -->
+  <g transform="translate(420,140)">
+    <circle r="70" fill="#fff9e6" opacity="0.95"/>
+    <circle r="120" fill="url(#moonGlow)"/>
+    <g transform="translate(-12,-10)" fill="#0b1726" opacity="0.12">
+      <path d="M30 10c-6 10-18 14-28 10 6 6 10 14 6 22 12-6 24-2 32 8-2-12 4-24 16-30-10-6-16-18-26-10z"/>
+    </g>
+    <animateTransform attributeName="transform" type="translate" values="420,140;430,150;420,140" dur="8s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- decorative wave shapes -->
+  <g fill="none" stroke="#ff94c2" stroke-opacity="0.08" stroke-width="8">
+    <path d="M0 420 C120 360 240 520 360 460 S600 540 600 480">
+      <animate attributeName="d" dur="12s" repeatCount="indefinite"
+        values="
+          M0 420 C120 360 240 520 360 460 S600 540 600 480;
+          M0 430 C120 380 240 500 360 470 S600 530 600 490;
+          M0 420 C120 360 240 520 360 460 S600 540 600 480"/>
+    </path>
+  </g>
+
+  <!-- poster frame -->
+  <rect x="36" y="180" width="528" height="420" rx="14" fill="#07131b" stroke="#ffffff" stroke-opacity="0.04"/>
+
+  <!-- movie text -->
+  <text x="48" y="118" class="title">MOONLIT</text>
+  <text x="48" y="160" class="title">MELODY</text>
+
+  <text x="48" y="240" class="subtitle">A romantic night under the stars</text>
+
+  <g transform="translate(48,300)">
+    <rect x="0" y="0" width="480" height="220" rx="10" fill="#071426" stroke="#ffffff" stroke-opacity="0.02"/>
+    <text x="18" y="40" class="tag">Romance</text>
+    <text x="18" y="78" fill="#c1dff2" font-size="14">Duration: 1h 50m</text>
+    <text x="18" y="104" fill="#c1dff2" font-size="14">IMDb: ⭐ 7.5</text>
+    <text x="18" y="130" fill="#c1dff2" font-size="14">Release: 2025-12-05</text>
+    <text x="18" y="156" fill="#c1dff2" font-size="14">Language: Hindi</text>
+
+    <!-- animated musical notes drifting -->
+    <g transform="translate(350,40)" fill="#ffd8f0" opacity="0.95">
+      <path d="M10 0 L10 28 A6 6 0 1 0 22 34 L22 8 z" transform="scale(0.8)">
+        <animateTransform attributeName="transform" type="translate" values="0,0; -6,-20; 0,0" dur="6s" repeatCount="indefinite"/>
+      </path>
+      <text x="-6" y="50" font-size="18" font-weight="700">♪</text>
+      <text x="6" y="80" font-size="26" opacity="0.85">♫
+        <animate attributeName="y" values="80;60;80" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.85;0.25;0.85" dur="5s" repeatCount="indefinite"/>
+      </text>
+    </g>
+  </g>
+
+  <!-- subtle flicker at bottom -->
+  <rect x="0" y="760" width="600" height="40" fill="#000" opacity="0.06">
+    <animate attributeName="opacity" values="0.06;0.02;0.06" dur="2s" repeatCount="indefinite"/>
+  </rect>
+</svg>
