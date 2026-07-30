@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Midnight Echoes - animated horror poster -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="g6" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0b0710"/>
+      <stop offset="100%" stop-color="#140712"/>
+    </linearGradient>
+    <filter id="blur6"><feGaussianBlur stdDeviation="6" result="b"/></filter>
+    <style>
+      .title { font: 700 40px "Poppins", Arial, sans-serif; fill:#fff; }
+      .sub { font: 300 14px "Poppins", Arial, sans-serif; fill:#c6b8c6; }
+    </style>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#g6)"/>
+
+  <!-- flickering lights -->
+  <g opacity="0.06" fill="#ff94c2">
+    <circle cx="120" cy="160" r="110">
+      <animate attributeName="r" values="110;130;110" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="220" r="100">
+      <animate attributeName="opacity" values="0.06;0.02;0.06" dur="7s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- eerie silhouette -->
+  <g transform="translate(300,460)">
+    <path d="M-80 120 C -60 60 -40 40 -10 30 C 10 10 40 10 60 20 C 80 30 100 60 96 120 Z" fill="#05040a" stroke="#fff" stroke-opacity="0.02"/>
+    <path d="M-40 40 C -20 20 -10 18 0 16 C 10 14 22 10 44 14" fill="none" stroke="#ff94c2" stroke-opacity="0.07" stroke-width="2">
+      <animate attributeName="stroke-opacity" values="0.07;0.02;0.07" dur="3.6s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="-16" cy="-30" r="6" fill="#fff9f0" opacity="0.9">
+      <animate attributeName="r" values="6;8;6" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="118" class="title">MIDNIGHT</text>
+  <text x="48" y="158" class="title">ECHOES</text>
+
+  <text x="48" y="200" class="sub">A chilling tale of the unknown</text>
+
+  <!-- details panel -->
+  <rect x="36" y="220" width="528" height="420" rx="12" fill="#05060a" stroke="#ffffff" stroke-opacity="0.02"/>
+  <g transform="translate(48,300)" fill="#cbbfd0">
+    <text x="0" y="40" font-size="14">Horror • 1h 55m • ⭐ 7.8</text>
+    <text x="0" y="70" font-size="14">Release: 2025-10-31</text>
+    <text x="0" y="100" font-size="14">Language: English</text>
+  </g>
+
+  <!-- animated mist overlay -->
+  <g filter="url(#blur6)" opacity="0.08" fill="#9aa6b2">
+    <ellipse cx="300" cy="520" rx="260" ry="48">
+      <animate attributeName="cx" values="300;330;300" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="rx" values="260;280;260" dur="14s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+  <!-- blinking eye -->
+  <g transform="translate(480,300)">
+    <ellipse cx="0" cy="0" rx="22" ry="12" fill="#fff" opacity="0.06"/>
+    <circle cx="0" cy="0" r="6" fill="#ff94c2">
+      <animate attributeName="r" values="6;2;6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
