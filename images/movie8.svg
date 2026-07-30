@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- City Lights - animated drama poster -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="g8" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0b1722"/>
+      <stop offset="100%" stop-color="#07121b"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 40px "Poppins", Arial, sans-serif; fill:#fff; }
+      .meta { font: 300 14px "Poppins", Arial, sans-serif; fill:#9aa6b2; }
+      .window { fill:#ffd6a5; opacity:0.1; }
+    </style>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#g8)"/>
+
+  <!-- skyline with animated windows -->
+  <g transform="translate(60,300)" fill="#0b1722" stroke="#ffffff" stroke-opacity="0.02">
+    <rect x="0" y="120" width="80" height="200" rx="4"/>
+    <rect x="96" y="80" width="70" height="240" rx="4"/>
+    <rect x="180" y="100" width="100" height="220" rx="4"/>
+    <rect x="292" y="60" width="120" height="260" rx="4"/>
+    <rect x="428" y="140" width="68" height="180" rx="4"/>
+    <!-- windows -->
+    <g id="wins" fill="#ffd6a5">
+      <rect x="8" y="132" width="12" height="12" rx="2" class="window">
+        <animate attributeName="opacity" values="0.06;0.5;0.06" dur="3s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="28" y="132" width="12" height="12" rx="2" class="window">
+        <animate attributeName="opacity" values="0.12;0.6;0.12" dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="108" y="96" width="12" height="12" rx="2" class="window">
+        <animate attributeName="opacity" values="0.02;0.5;0.02" dur="3.6s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="320" y="76" width="12" height="12" rx="2" class="window">
+        <animate attributeName="opacity" values="0.06;0.5;0.06" dur="5s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="118" class="title">CITY</text>
+  <text x="48" y="160" class="title">LIGHTS</text>
+  <text x="48" y="200" class="meta">Drama • 2h 00m • ⭐ 7.9</text>
+
+  <!-- poster card -->
+  <rect x="36" y="220" width="528" height="420" rx="12" fill="#07121a" stroke="#ffffff" stroke-opacity="0.02"/>
+
+  <g transform="translate(48,300)">
+    <text x="0" y="40" fill="#9aa6b2" font-size="14">Release: 2026-05-20</text>
+    <text x="0" y="68" fill="#9aa6b2" font-size="14">Language: Hindi</text>
+  </g>
+
+  <!-- moving car lights (subtle) -->
+  <g fill="#ffb4a2" opacity="0.9">
+    <circle cx="100" cy="700" r="4">
+      <animate attributeName="cx" values="100;200;100" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.2;0.9" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="710" r="4">
+      <animate attributeName="cx" values="320;420;320" dur="7s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
