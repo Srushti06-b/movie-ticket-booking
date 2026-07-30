@@ -1,0 +1,141 @@
+
+
+/* style.css - CinemaX
+   Modern, responsive dark cinema theme
+   Well-commented and organized for a college project.
+*/
+
+:root{
+  --bg:#05060a;
+  --card:#0f1724;
+  --muted:#98a1b3;
+  --accent1:#ff3b3b; /* red */
+  --accent2:#0ea5b4; /* teal */
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --shadow: 0 8px 24px rgba(0,0,0,0.6);
+  --green:#28a745;
+  --blue:#007bff;
+  --red:#dc3545;
+  --max-width:1200px;
+  font-family: 'Poppins', sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#03040a 0%, #061028 50%, #070511 100%);
+  color:#e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Utility containers */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:1rem;
+}
+
+/* Navigation */
+.nav-wrap{position:sticky;top:0;z-index:60;background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.15));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0}
+.logo{font-weight:700;color:var(--accent2);font-size:1.2rem;text-decoration:none}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;padding:0.35rem 0.6rem;border-radius:8px;transition:all .18s}
+.nav-links a:hover, .nav-links a.active{color:#fff;background:rgba(255,255,255,0.03)}
+.nav-toggle{display:none;background:none;border:none;color:var(--muted);font-size:1.1rem}
+
+/* Hero */
+.hero{padding:4rem 0;color:#fff;background-size:cover;background-position:center;animation:fadeIn .9s ease both}
+.hero-inner{display:flex;gap:2rem;align-items:center;justify-content:space-between}
+.hero-text{flex:1;max-width:640px}
+.hero-text h1{font-size:2.4rem;margin:0 0 .5rem;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.hero-text p{color:var(--muted);margin:0 0 1rem}
+.hero-cta .btn{margin-right:.6rem}
+.hero-featured{width:300px}
+
+/* Cards & grids */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.featured-movies h2{margin:1rem 0 0.5rem}
+.featured-card{display:flex;gap:0.6rem;align-items:center;padding:.8rem;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:var(--shadow)}
+.featured-card img{width:80px;border-radius:8px;object-fit:cover}
+.card-info h4{margin:0 0 .25rem}
+.card-info .muted{color:var(--muted);font-size:.85rem}
+
+/* Glass panels */
+.glass{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:1rem;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03)}
+
+/* Buttons */
+.btn{display:inline-block;padding:.6rem 1rem;border-radius:10px;background:rgba(255,255,255,0.03);color:#fff;border:none;cursor:pointer;text-decoration:none}
+.btn.small{padding:.4rem .6rem;font-size:.9rem}
+.btn:focus{outline:2px solid rgba(255,255,255,0.06)}
+.btn-gradient{background:linear-gradient(90deg,#ff4b4b,#ff6a3a);box-shadow:0 8px 28px rgba(255,75,75,0.12)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.btn-cta{background:linear-gradient(90deg,#0ea5b4,#2dd4bf);color:#021;}
+
+/* Movies grid */
+.movies-grid{margin-top:1rem}
+.movie-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:0.6rem;border-radius:12px;display:flex;gap:0.8rem;align-items:flex-start;transition:transform .18s, box-shadow .18s}
+.movie-card:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(0,0,0,0.55)}
+.movie-card img{width:110px;border-radius:8px;flex-shrink:0}
+.movie-meta{flex:1}
+.movie-meta h4{margin:0 0 .25rem}
+.meta-small{color:var(--muted);font-size:.9rem;margin-bottom:.5rem}
+
+/* Booking layout */
+.booking-main{display:flex;gap:1rem;align-items:flex-start}
+.booking-left{flex:1}
+.booking-right{width:320px;position:sticky;top:90px;height:fit-content}
+.booking-form .form-row{margin-bottom:.9rem}
+.booking-form label{display:block;font-size:.9rem;margin-bottom:.35rem;color:var(--muted)}
+.booking-form input, .booking-form select{width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff}
+
+/* Seat map */
+.seat-map{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;padding:0.6rem;border-radius:8px;background:var(--glass-2);margin-top:.6rem}
+.seat{width:100%;padding:10px 6px;border-radius:6px;display:inline-block;text-align:center;cursor:pointer;box-shadow:inset 0 -3px 6px rgba(0,0,0,0.2)}
+.seat.available{background:linear-gradient(180deg,var(--green),#1e7a3a)}
+.seat.selected{background:linear-gradient(180deg,var(--blue),#0065d1)}
+.seat.booked{background:linear-gradient(180deg,var(--red),#b2232b);cursor:not-allowed;opacity:0.95}
+.legend span{display:inline-flex;gap:.5rem;align-items:center;margin-right:.8rem;color:var(--muted)}
+.legend .seat{width:16px;height:16px;padding:0;border-radius:4px;display:inline-block}
+
+/* Summary */
+.summary{padding:1rem;border-radius:12px}
+.summary h3{margin-top:0}
+.summary .summary-body p{margin:0.35rem 0;color:var(--muted)}
+.summary .total{margin-top:1rem;color:#fff}
+
+/* Loading/Confirmation */
+.loading{display:flex;flex-direction:column;align-items:center;gap:.6rem;padding:1rem}
+.spinner{width:48px;height:48px;border-radius:50%;border:5px solid rgba(255,255,255,0.06);border-top-color:var(--accent2);animation:spin 1s linear infinite}
+.confirmation.hidden{display:none}
+.confirmation{padding:1rem;border-radius:12px}
+
+/* Footer */
+.footer{margin-top:2rem;padding:1.2rem 0;color:var(--muted)}
+.footer .foot-inner{display:flex;justify-content:space-between;align-items:center}
+.socials a{color:var(--muted);margin-left:.6rem}
+
+/* Back to top */
+.back-top{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,#ff4b4b,#ff6a3a);color:#fff;padding:.6rem;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;z-index:999}
+
+/* Small screens */
+@media (max-width:900px){
+  .hero-inner{flex-direction:column;align-items:flex-start}
+  .nav-links{display:none;position:absolute;top:64px;right:12px;background:rgba(0,0,0,0.6);padding:1rem;border-radius:12px;flex-direction:column}
+  .nav-toggle{display:block}
+  .booking-main{flex-direction:column}
+  .booking-right{position:relative;width:100%;top:auto}
+  .seat-map{grid-template-columns:repeat(8,1fr)}
+  .grid-3{grid-template-columns:1fr}
+  .featured-card img{width:64px}
+  .hero-featured{width:100%}
+}
+
+/* Animations */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
