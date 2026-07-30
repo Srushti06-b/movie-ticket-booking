@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Hidden Code - animated thriller poster -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0b0f14"/>
+      <stop offset="50%" stop-color="#0f1b25">
+        <animate attributeName="stop-color" values="#0f1b25;#14232b;#0f1b25" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#071021"/>
+    </linearGradient>
+
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
+      <feBlend mode="overlay" in="mono" in2="SourceGraphic"/>
+    </filter>
+
+    <style>
+      .title { font: 700 40px/1 "Poppins", Arial, sans-serif; fill: #dbeafe; letter-spacing: 1px; }
+      .sub { font: 300 16px "Poppins", Arial, sans-serif; fill: #9fb4c9; }
+      .code { font: 700 22px "Poppins", Arial, sans-serif; fill: #6ee7b7; }
+      .digit { font: 700 14px monospace; fill:#6ee7b7; opacity:0.75 }
+    </style>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#g3)"/>
+
+  <!-- scanning lines -->
+  <g opacity="0.06" fill="#9eeadf">
+    <rect x="-200" y="0" width="1200" height="8" transform="skewY(-12)">
+      <animate attributeName="x" values="-200;0;200;-200" dur="10s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="-100" y="180" width="1200" height="6" transform="skewY(-6)">
+      <animate attributeName="x" values="200;0;-200;200" dur="14s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- matrix code block -->
+  <g transform="translate(40,220)">
+    <rect width="520" height="420" rx="12" fill="#071016" stroke="#ffffff" stroke-opacity="0.03"/>
+    <!-- animated 'code' characters -->
+    <g font-family="monospace" font-size="14" fill="#6ee7b7" opacity="0.9" transform="translate(18,28)">
+      <!-- generate columns of numbers with different animation delays -->
+      <g id="col">
+        <text x="0" y="0">01010110 1010 0011</text>
+      </g>
+      <g transform="translate(0,0)">
+        <text x="0" y="20" class="digit">10101001 0011 1100
+          <animate attributeName="y" values="20;0;20" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.9;0.2;0.9" dur="6s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="40" class="digit">11001101 1001 0010
+          <animate attributeName="y" values="40;20;40" dur="5s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="60" class="digit">00110011 0101 1110
+          <animate attributeName="y" values="60;40;60" dur="7s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="80" class="digit">11100011 0100 1101
+          <animate attributeName="y" values="80;60;80" dur="6.5s" repeatCount="indefinite"/>
+        </text>
+      </g>
+    </g>
+
+    <!-- spotlight rectangle -->
+    <rect x="360" y="40" width="120" height="120" rx="8" fill="#0a1420" stroke="#58ffb0" stroke-opacity="0.12">
+      <animate attributeName="x" values="360;330;360" dur="8s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- title & details -->
+  <text x="48" y="120" class="title">THE</text>
+  <text x="48" y="160" class="title">HIDDEN CODE</text>
+
+  <text x="48" y="200" class="sub">A cyber-thriller of secrets & surveillance</text>
+
+  <g transform="translate(48,660)">
+    <text class="code">Thriller • 2h 05m • ⭐ 8.0</text>
+    <text x="0" y="26" class="sub">Release: 2026-01-22 • Language: English</text>
+  </g>
+
+  <!-- animated 'scanner' line over poster area -->
+  <rect x="36" y="200" width="528" height="420" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.02"/>
+  <rect x="-600" y="380" width="1200" height="2" fill="#6ee7b7" opacity="0.12">
+    <animate attributeName="x" values="-600;0;600;-600" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.12;0.02;0.12" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- subtle grain overlay -->
+  <rect width="600" height="800" fill="#ffffff" opacity="0.01" filter="url(#grain)"/>
+</svg>
