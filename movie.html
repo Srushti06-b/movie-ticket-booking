@@ -1,298 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Movies - CinemaX</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#0f1720;
+      --muted:#9aa6b2;
+      --accent-1:#7c3aed;
+      --accent-2:#06b6d4;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --success:#10b981;
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #071021 0%, var(--bg) 40%, #04060a 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding-bottom:60px;
+    }
+
+    .container{
+      max-width:1150px;
+      margin:0 auto;
+      padding:28px;
+    }
+
+    /* Header */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(7,10,16,0.6), rgba(7,10,16,0.35));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 20px rgba(2,6,23,0.7);
+    }
+
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--accent-2);
+      font-weight:700;
+      letter-spacing:0.4px;
+      font-size:1.1rem;
+    }
+
+    .logo-mark{
+      width:38px;
+      height:38px;
+      display:inline-grid;
+      place-items:center;
+      border-radius:8px;
+      background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      color:white;
+      font-weight:800;
+      box-shadow: 0 6px 18px rgba(124,58,237,0.18), 0 2px 6px rgba(6,182,212,0.08);
+    }
+
+    .main-nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .main-nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:0.95rem;
+      transition:all .18s ease;
+    }
+
+    .main-nav a:hover{ color: #fff; transform:translateY(-2px); }
+    .main-nav a.active{
+      color:#061123;
+      background:linear-gradient(90deg,var(--accent-2),var(--accent-1));
+      box-shadow: 0 6px 20px rgba(7,12,20,0.5);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:32px;
+      border-radius:14px;
+      border: 1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 8px 40px rgba(2,6,23,0.6);
+      overflow:hidden;
+    }
+
+    .hero-left h1{
+      margin:0 0 8px 0;
+      font-size:2rem;
+      letter-spacing:-0.6px;
+      color:linear-gradient(#fff,#ddd);
+    }
+
+    .hero-left p{
+      margin:0 0 16px 0;
+      color:var(--muted);
+      max-width:60ch;
+    }
+
+    .hero-cta{display:flex;gap:12px}
+    .btn{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+      font-size:0.95rem;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+
+    .btn-primary{
+      color:#041022;
+      background:linear-gradient(90deg,var(--accent-2),var(--accent-1));
+      box-shadow: 0 10px 30px rgba(7,12,20,0.6);
+    }
+    .btn-outline{
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;
+      padding:10px 14px;
+    }
+    .btn:hover{transform:translateY(-3px)}
+
+    .hero-thumb{
+      height:250px;
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(6,182,212,0.08));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .hero-thumb .poster-lg{
+      width:88%;
+      height:86%;
+      border-radius:10px;
+      background:linear-gradient(135deg,#11203a 0%, #051229 100%);
+      display:grid;
+      place-items:center;
+      color:var(--muted);
+      font-size:1.1rem;
+      letter-spacing:0.6px;
+      border: 1px solid rgba(255,255,255,0.02);
+      transform:rotate(-3deg);
+      box-shadow: 0 20px 60px rgba(4,8,18,0.7);
+    }
+
+    /* Controls */
+    .movies-wrap{
+      margin-top:22px;
+    }
+
+    .controls{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .search-mini{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background:var(--glass);
+      padding:9px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .search-mini input{
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--muted);
+      font-weight:600;
+      width:220px;
+    }
+    .search-mini input::placeholder{color:#6f7b84}
+
+    .filters select{
+      background:var(--glass-2);
+      border:1px solid rgba(255,255,255,0.03);
+      padding:9px 12px;
+      border-radius:10px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    /* Grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding:22px}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero-thumb{height:200px}
+      .search-mini input{width:160px}
+    }
+    @media (max-width:640px){
+      .container{padding:18px}
+      .grid{grid-template-columns:1fr}
+      .main-nav{display:none}
+      .brand{gap:8px}
+      .hero-thumb{height:160px}
+      .hero-left h1{font-size:1.5rem}
+    }
+
+    /* Movie Card */
+    .movie-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.03);
+      padding:14px;
+      border-radius:12px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      transition: transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .18s;
+      transform-origin:center;
+      box-shadow: 0 6px 18px rgba(2,8,20,0.6);
+      overflow:hidden;
+    }
+
+    .movie-card:hover{
+      transform:translateY(-8px) scale(1.01);
+      box-shadow: 0 18px 60px rgba(2,8,20,0.75);
+    }
+
+    .poster{
+      width:120px;
+      min-width:120px;
+      height:168px;
+      border-radius:10px;
+      position:relative;
+      overflow:hidden;
+      flex-shrink:0;
+      background:linear-gradient(135deg, rgba(124,58,237,0.18), rgba(6,182,212,0.08));
+      border:1px solid rgba(255,255,255,0.02);
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      padding:10px;
+    }
+
+    .poster .poster-art{
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-size:1.1rem;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.02), transparent),
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.03), transparent 10%),
+        linear-gradient(135deg, #1b2633, #081426);
+      mix-blend-mode:normal;
+      transition:transform .4s ease;
+    }
+
+    .poster:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, rgba(124,58,237,0.10), rgba(6,182,212,0.06));
+      transform:translateZ(0);
+      opacity:0.9;
+    }
+
+    .poster .badge{
+      position:absolute;
+      left:8px;
+      top:8px;
+      font-size:12px;
+      font-weight:700;
+      color:#041022;
+      background:linear-gradient(90deg,var(--accent-2),var(--accent-1));
+      padding:6px 8px;
+      border-radius:8px;
+      box-shadow: 0 6px 20px rgba(7,12,20,0.5);
+    }
+
+    .meta{flex:1; min-width:0}
+    .meta h3{margin:0 0 6px 0; font-size:1.05rem}
+    .sub{color:var(--muted); font-size:0.88rem; margin-bottom:8px}
+    .desc{color:#b9c6cf; font-size:0.92rem; margin-bottom:10px; display:block; max-height:3.2em; overflow:hidden}
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .pill{
+      background:rgba(255,255,255,0.03);
+      color:var(--muted);
+      padding:6px 8px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:0.82rem;
+    }
+
+    .rating{
+      background:linear-gradient(90deg,#f59e0b,#f97316);
+      padding:6px 8px;
+      border-radius:8px;
+      font-weight:800;
+      color:#041022;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:0.9rem;
+    }
+
+    .card-actions{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:8px;
+      margin-left:8px;
+    }
+
+    .book-btn{
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:10px;
+      background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:#041122;
+      font-weight:800;
+      box-shadow: 0 10px 30px rgba(7,12,20,0.5);
+      transition:transform .14s ease;
+    }
+    .book-btn:hover{ transform:translateY(-4px) }
+
+    /* subtle poster shimmer */
+    .poster .poster-art::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      transform:skewX(-18deg) translateX(-140%);
+      background:linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 100%);
+      animation: shimmer 3.4s linear infinite;
+      pointer-events:none;
+      mix-blend-mode:overlay;
+    }
+    @keyframes shimmer{
+      to{ transform:skewX(-18deg) translateX(240%); }
+    }
+
+    /* small details */
+    .no-results{
+      padding:28px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      color:var(--muted);
+      text-align:center;
+      border:1px dashed rgba(255,255,255,0.02);
+    }
+
+    /* tiny footer */
+    .site-foot{
+      margin-top:36px;
+      color:var(--muted);
+      text-align:center;
+      padding:18px 0 38px;
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="CinemaX Home">
+        <span class="logo-mark" aria-hidden="true">C</span>
+        CinemaX
+      </a>
 
-<header class="site-header">
-  <div class="container nav-inner">
-
-    <a href="index.html" class="brand">
-      <span class="logo-mark">C</span>
-      CinemaX
-    </a>
-
-    <nav class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="movie.html" class="active">Movies</a>
-      <a href="booking.html">Book Tickets</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-  </div>
-</header>
-
-
-<main class="container">
-
-  <section class="hero">
-    <div class="hero-left">
-      <h1>Explore Movies</h1>
-      <p>Discover the latest movies and book your tickets easily.</p>
-
-      <div class="hero-cta">
-        <a href="#movies" class="btn btn-primary">Browse Movies</a>
-        <a href="index.html" class="btn btn-outline">Back Home</a>
-      </div>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="movie.html" class="active" aria-current="page">Movies</a>
+        <a href="booking.html">Book Tickets</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="hero-thumb">
-      <img src="images/movie1.svg" alt="Featured Movie">
-    </div>
-  </section>
+  <main class="container" id="page-main">
+    <section class="hero" role="region" aria-label="Explore Movies">
+      <div class="hero-left">
+        <h1>Explore Movies</h1>
+        <p>Discover the latest releases, filter by genre, or search titles and descriptions. Tap a film to view showtimes and book your seats.</p>
 
-
-  <section class="movies-wrap" id="movies">
-
-    <div class="controls">
-
-      <div class="left">
-        <div class="search-mini">
-          🔍
-          <input type="text" id="searchInput" placeholder="Search movies...">
+        <div class="hero-cta">
+          <a href="#movies" class="btn btn-primary">Browse Movies</a>
+          <a href="index.html" class="btn btn-outline">Back Home</a>
         </div>
       </div>
 
-      <div class="filters">
-        <select id="genreFilter">
-          <option value="all">All Genres</option>
-          <option value="Action">Action</option>
-          <option value="Romance">Romance</option>
-          <option value="Thriller">Thriller</option>
-          <option value="Sci-Fi">Sci-Fi</option>
-          <option value="Comedy">Comedy</option>
-          <option value="Horror">Horror</option>
-          <option value="Fantasy">Fantasy</option>
-          <option value="Drama">Drama</option>
-          <option value="Adventure">Adventure</option>
-        </select>
+      <div class="hero-thumb" aria-hidden="true">
+        <div class="poster-lg">
+          Curated picks • New & Trending
+        </div>
+      </div>
+    </section>
+
+    <section class="movies-wrap" id="movies" aria-label="Movie list">
+      <div class="controls" role="search" aria-label="Search and filter movies">
+        <div class="left" style="display:flex;gap:12px;align-items:center;">
+          <div class="search-mini" title="Search movies">
+            <span aria-hidden="true">🔍</span>
+            <input type="search" id="searchInput" placeholder="Search movies..." aria-label="Search movies" />
+          </div>
+          <div style="color:var(--muted);font-weight:700;font-size:0.9rem">Results: <span id="resultCount">10</span></div>
+        </div>
+
+        <div class="filters">
+          <label for="genreFilter" class="sr-only" style="position:absolute;left:-9999px">Filter by genre</label>
+          <select id="genreFilter" aria-label="Filter by genre">
+            <option value="all">All Genres</option>
+            <option>Action</option>
+            <option>Romance</option>
+            <option>Thriller</option>
+            <option>Sci-Fi</option>
+            <option>Comedy</option>
+            <option>Horror</option>
+            <option>Fantasy</option>
+            <option>Drama</option>
+            <option>Adventure</option>
+          </select>
+        </div>
       </div>
 
-    </div>
-
-
-    <div class="grid">
-
-      <!-- Movie 1 -->
-      <article class="movie-card" data-title="Starlight Saga" data-genre="Action">
-        <div class="poster">
-          <img src="images/movie1.svg" alt="Starlight Saga">
-        </div>
-        <div class="meta">
-          <h3>Starlight Saga</h3>
-          <div class="sub">Action • 2h 10m • 2026</div>
-          <div class="desc">An exciting action adventure beyond the stars.</div>
-          <div class="row">
-            <span class="pill">English</span>
-            <span class="rating">⭐ 8.5</span>
+      <div class="grid" id="grid">
+        <!-- Movie 1 -->
+        <article class="movie-card" data-title="Starlight Saga" data-genre="Action" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#0f172a 0%,#3b82f6 60%);">
+              <div class="badge">A</div>
+              ST
+            </div>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=1">Book</a>
-        </div>
-      </article>
-
-
-      <!-- Movie 2 -->
-      <article class="movie-card" data-title="Moonlit Melody" data-genre="Romance">
-        <div class="poster">
-          <img src="images/movie2.svg" alt="Moonlit Melody">
-        </div>
-        <div class="meta">
-          <h3>Moonlit Melody</h3>
-          <div class="sub">Romance • 1h 50m • 2025</div>
-          <div class="desc">A beautiful story about love, music and second chances.</div>
-          <div class="row">
-            <span class="pill">Hindi</span>
-            <span class="rating">⭐ 7.5</span>
+          <div class="meta">
+            <h3>Starlight Saga</h3>
+            <div class="sub">Action • 2h 10m • 2026</div>
+            <div class="desc">A space-faring action epic where a renegade crew races to save the galaxy from a rising warlord.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">English</span>
+              <span class="rating">⭐ 8.5</span>
+            </div>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=2">Book</a>
-        </div>
-      </article>
-
-
-      <!-- Movie 3 -->
-      <article class="movie-card" data-title="The Hidden Code" data-genre="Thriller">
-        <div class="poster">
-          <img src="images/movie3.svg" alt="The Hidden Code">
-        </div>
-        <div class="meta">
-          <h3>The Hidden Code</h3>
-          <div class="sub">Thriller • 2h 05m • 2026</div>
-          <div class="desc">A thrilling mystery where every clue is encrypted.</div>
-          <div class="row">
-            <span class="pill">English</span>
-            <span class="rating">⭐ 8.0</span>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=1" aria-label="Book Starlight Saga">Book Now</a>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=3">Book</a>
-        </div>
-      </article>
+        </article>
 
-
-      <!-- Movie 4 -->
-      <article class="movie-card" data-title="Galactic Quest" data-genre="Sci-Fi">
-        <div class="poster">
-          <img src="images/movie4.svg" alt="Galactic Quest">
-        </div>
-        <div class="meta">
-          <h3>Galactic Quest</h3>
-          <div class="sub">Sci-Fi • 2h 25m • 2026</div>
-          <div class="desc">An incredible journey across distant galaxies.</div>
-          <div class="row">
-            <span class="pill">English</span>
-            <span class="rating">⭐ 8.6</span>
+        <!-- Movie 2 -->
+        <article class="movie-card" data-title="Moonlit Melody" data-genre="Romance" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#4f46e5 0%,#ec4899 60%);">
+              <div class="badge">R</div>
+              MM
+            </div>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=4">Book</a>
-        </div>
-      </article>
-
-
-      <!-- Movie 5 -->
-      <article class="movie-card" data-title="Laugh Riot" data-genre="Comedy">
-        <div class="poster">
-          <img src="images/movie5.svg" alt="Laugh Riot">
-        </div>
-        <div class="meta">
-          <h3>Laugh Riot</h3>
-          <div class="sub">Comedy • 1h 40m • 2026</div>
-          <div class="desc">A fun comedy filled with laughter and surprises.</div>
-          <div class="row">
-            <span class="pill">Hindi</span>
-            <span class="rating">⭐ 7.1</span>
+          <div class="meta">
+            <h3>Moonlit Melody</h3>
+            <div class="sub">Romance • 1h 50m • 2025</div>
+            <div class="desc">A moving love story that blossoms between two musicians under a city of lights.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">Hindi</span>
+              <span class="rating">⭐ 7.5</span>
+            </div>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=5">Book</a>
-        </div>
-      </article>
-
-
-      <!-- Movie 6 -->
-      <article class="movie-card" data-title="Midnight Echoes" data-genre="Horror">
-        <div class="poster">
-          <img src="images/movie6.svg" alt="Midnight Echoes">
-        </div>
-        <div class="meta">
-          <h3>Midnight Echoes</h3>
-          <div class="sub">Horror • 1h 55m • 2025</div>
-          <div class="desc">A chilling story of an ancient darkness.</div>
-          <div class="row">
-            <span class="pill">English</span>
-            <span class="rating">⭐ 7.8</span>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=2" aria-label="Book Moonlit Melody">Book Now</a>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=6">Book</a>
-        </div>
-      </article>
+        </article>
 
-
-      <!-- Movie 7 -->
-      <article class="movie-card" data-title="Legends Of Dawn" data-genre="Fantasy">
-        <div class="poster">
-          <img src="images/movie7.svg" alt="Legends Of Dawn">
-        </div>
-        <div class="meta">
-          <h3>Legends Of Dawn</h3>
-          <div class="sub">Fantasy • 2h 20m • 2026</div>
-          <div class="desc">An epic adventure filled with ancient magic.</div>
-          <div class="row">
-            <span class="pill">Telugu</span>
-            <span class="rating">⭐ 8.3</span>
+        <!-- Movie 3 -->
+        <article class="movie-card" data-title="The Hidden Code" data-genre="Thriller" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#0f172a 0%,#06b6d4 70%);">
+              <div class="badge">T</div>
+              HC
+            </div>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=7">Book</a>
-        </div>
-      </article>
-
-
-      <!-- Movie 8 -->
-      <article class="movie-card" data-title="City Lights" data-genre="Drama">
-        <div class="poster">
-          <img src="images/movie8.svg" alt="City Lights">
-        </div>
-        <div class="meta">
-          <h3>City Lights</h3>
-          <div class="sub">Drama • 2h 00m • 2026</div>
-          <div class="desc">A moving story about lives connected by a city.</div>
-          <div class="row">
-            <span class="pill">Hindi</span>
-            <span class="rating">⭐ 7.9</span>
+          <div class="meta">
+            <h3>The Hidden Code</h3>
+            <div class="sub">Thriller • 2h 05m • 2026</div>
+            <div class="desc">A cryptic mystery thriller where a code links a series of high-profile crimes to one hidden mastermind.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">English</span>
+              <span class="rating">⭐ 8.0</span>
+            </div>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=8">Book</a>
-        </div>
-      </article>
-
-
-      <!-- Movie 9 -->
-      <article class="movie-card" data-title="Speedline" data-genre="Action">
-        <div class="poster">
-          <img src="images/movie9.svg" alt="Speedline">
-        </div>
-        <div class="meta">
-          <h3>Speedline</h3>
-          <div class="sub">Action • 1h 50m • 2026</div>
-          <div class="desc">A high-speed race against time.</div>
-          <div class="row">
-            <span class="pill">English</span>
-            <span class="rating">⭐ 7.6</span>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=3" aria-label="Book The Hidden Code">Book Now</a>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=9">Book</a>
-        </div>
-      </article>
+        </article>
 
-
-      <!-- Movie 10 -->
-      <article class="movie-card" data-title="Aurora" data-genre="Adventure">
-        <div class="poster">
-          <img src="images/movie10.svg" alt="Aurora">
-        </div>
-        <div class="meta">
-          <h3>Aurora</h3>
-          <div class="sub">Adventure • 2h 05m • 2026</div>
-          <div class="desc">An adventure chasing the beautiful northern lights.</div>
-          <div class="row">
-            <span class="pill">English</span>
-            <span class="rating">⭐ 8.0</span>
+        <!-- Movie 4 -->
+        <article class="movie-card" data-title="Galactic Quest" data-genre="Sci-Fi" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#022c43 0%,#06b6d4 70%);">
+              <div class="badge">S</div>
+              GQ
+            </div>
           </div>
-        </div>
-        <div class="card-actions">
-          <a class="book-btn" href="booking.html?movieId=10">Book</a>
-        </div>
-      </article>
+          <div class="meta">
+            <h3>Galactic Quest</h3>
+            <div class="sub">Sci-Fi • 2h 25m • 2026</div>
+            <div class="desc">An interstellar adventure that follows explorers crossing collapsing wormholes to find a new home.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">English</span>
+              <span class="rating">⭐ 8.6</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=4" aria-label="Book Galactic Quest">Book Now</a>
+          </div>
+        </article>
 
-    </div>
-  </section>
+        <!-- Movie 5 -->
+        <article class="movie-card" data-title="Laugh Riot" data-genre="Comedy" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#f97316 0%,#f59e0b 60%);">
+              <div class="badge">C</div>
+              LR
+            </div>
+          </div>
+          <div class="meta">
+            <h3>Laugh Riot</h3>
+            <div class="sub">Comedy • 1h 40m • 2026</div>
+            <div class="desc">A high-energy comedy about unlikely roommates staging the biggest pranks the city has seen.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">Hindi</span>
+              <span class="rating">⭐ 7.1</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=5" aria-label="Book Laugh Riot">Book Now</a>
+          </div>
+        </article>
 
-</main>
+        <!-- Movie 6 -->
+        <article class="movie-card" data-title="Midnight Echoes" data-genre="Horror" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#0b1020 0%,#111827 70%);">
+              <div class="badge">H</div>
+              ME
+            </div>
+          </div>
+          <div class="meta">
+            <h3>Midnight Echoes</h3>
+            <div class="sub">Horror • 1h 55m • 2025</div>
+            <div class="desc">A chilling descent into whispers that return at midnight, revealing a city's buried past.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">English</span>
+              <span class="rating">⭐ 7.8</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=6" aria-label="Book Midnight Echoes">Book Now</a>
+          </div>
+        </article>
 
+        <!-- Movie 7 -->
+        <article class="movie-card" data-title="Legends Of Dawn" data-genre="Fantasy" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#6d28d9 0%,#ef4444 60%);">
+              <div class="badge">F</div>
+              LD
+            </div>
+          </div>
+          <div class="meta">
+            <h3>Legends Of Dawn</h3>
+            <div class="sub">Fantasy • 2h 20m • 2026</div>
+            <div class="desc">An epic tale of ancient magic, a lost heir, and kingdoms reborn from the ashes of war.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">Telugu</span>
+              <span class="rating">⭐ 8.3</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=7" aria-label="Book Legends Of Dawn">Book Now</a>
+          </div>
+        </article>
 
-<footer class="site-foot">
-  <div class="container foot-inner">
-    <div class="copyright">
+        <!-- Movie 8 -->
+        <article class="movie-card" data-title="City Lights" data-genre="Drama" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#0ea5a6 0%,#0369a1 60%);">
+              <div class="badge">D</div>
+              CL
+            </div>
+          </div>
+          <div class="meta">
+            <h3>City Lights</h3>
+            <div class="sub">Drama • 2h 00m • 2026</div>
+            <div class="desc">An intimate drama about lives that intersect and the small moments that define us.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">Hindi</span>
+              <span class="rating">⭐ 7.9</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=8" aria-label="Book City Lights">Book Now</a>
+          </div>
+        </article>
+
+        <!-- Movie 9 -->
+        <article class="movie-card" data-title="Speedline" data-genre="Action" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#ef4444 0%,#f97316 60%);">
+              <div class="badge">A</div>
+              SP
+            </div>
+          </div>
+          <div class="meta">
+            <h3>Speedline</h3>
+            <div class="sub">Action • 1h 50m • 2026</div>
+            <div class="desc">A high-velocity thriller centered on a championship race where stakes are life-or-death.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">English</span>
+              <span class="rating">⭐ 7.6</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=9" aria-label="Book Speedline">Book Now</a>
+          </div>
+        </article>
+
+        <!-- Movie 10 -->
+        <article class="movie-card" data-title="Aurora" data-genre="Adventure" tabindex="0">
+          <div class="poster" aria-hidden="true">
+            <div class="poster-art" style="background:linear-gradient(135deg,#0ea5a6 0%,#7c3aed 70%);">
+              <div class="badge">AD</div>
+              AU
+            </div>
+          </div>
+          <div class="meta">
+            <h3>Aurora</h3>
+            <div class="sub">Adventure • 2h 05m • 2026</div>
+            <div class="desc">A breathtaking expedition chasing the northern lights, where survival and wonder collide.</div>
+            <div class="row" style="margin-top:8px">
+              <span class="pill">English</span>
+              <span class="rating">⭐ 8.0</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <a class="book-btn" href="booking.html?movieId=10" aria-label="Book Aurora">Book Now</a>
+          </div>
+        </article>
+      </div>
+
+      <div id="noResults" class="no-results" style="display:none;margin-top:12px;">
+        No movies match your search. Try a different keyword or genre.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="container foot-inner">
       © 2026 CinemaX. All rights reserved.
     </div>
-  </div>
-</footer>
+  </footer>
 
+  <script>
+    // Search & filter functionality
+    (function(){
+      const searchInput = document.getElementById('searchInput');
+      const genreFilter = document.getElementById('genreFilter');
+      const grid = document.getElementById('grid');
+      const cards = Array.from(grid.querySelectorAll('.movie-card'));
+      const noResults = document.getElementById('noResults');
+      const resultCount = document.getElementById('resultCount');
+
+      function normalize(s){ return (s||'').toString().trim().toLowerCase(); }
+
+      function update() {
+        const q = normalize(searchInput.value);
+        const genre = genreFilter.value === 'all' ? 'all' : normalize(genreFilter.value);
+        let visible = 0;
+
+        cards.forEach(card => {
+          const title = normalize(card.dataset.title);
+          const g = normalize(card.dataset.genre);
+          const desc = normalize(card.querySelector('.desc')?.textContent || '');
+          const matchesGenre = (genre === 'all') || (g === genre);
+          const matchesQuery = !q || title.includes(q) || desc.includes(q) || g.includes(q);
+
+          if (matchesGenre && matchesQuery) {
+            card.style.display = '';
+            visible++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        resultCount.textContent = visible;
+        noResults.style.display = visible === 0 ? 'block' : 'none';
+      }
+
+      // Debounce input
+      let timer = null;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(update, 150);
+      });
+
+      genreFilter.addEventListener('change', update);
+
+      // Keyboard accessibility: Enter on card opens booking for that movie (Book Now)
+      cards.forEach(card => {
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            const btn = card.querySelector('.book-btn');
+            if (btn) {
+              e.preventDefault();
+              // navigate:
+              window.location.href = btn.getAttribute('href');
+            }
+          }
+        });
+      });
+
+      // Initial update in case of pre-filled values
+      update();
+
+      // small animation delay for poster arts
+      window.requestAnimationFrame(() => {
+        document.querySelectorAll('.poster .poster-art').forEach((el, idx) => {
+          el.style.transition = 'transform .9s cubic-bezier(.22,.9,.35,1) ' + (idx*60) + 'ms';
+          el.style.transform = 'translateY(0)';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
