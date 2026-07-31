@@ -1,190 +1,196 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
-  <defs>
-    <style>
-      @keyframes shimmerEffect {
-        0% { transform: translateX(-100%); opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { transform: translateX(100%); opacity: 0; }
-      }
-      
-      @keyframes glow {
-        0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 107, 107, 0.5)); }
-        50% { filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.9)); }
-      }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-8px); }
-      }
-      
-      @keyframes rotateStar {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      
-      @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(1.05); }
-      }
-      
-      @keyframes borderFlow {
-        0% { stroke-dashoffset: 1000; }
-        100% { stroke-dashoffset: 0; }
-      }
-      
-      .poster-main { animation: float 3s ease-in-out infinite; }
-      .title-glow { animation: glow 2s ease-in-out infinite; }
-      .shimmer { animation: shimmerEffect 2.5s infinite; }
-      .star-anim { animation: rotateStar 4s linear infinite; transform-origin: 200px 120px; }
-      .pulse-badge { animation: pulse 1.5s ease-in-out infinite; }
-    </style>
-    
-    <!-- Gradients -->
-    <linearGradient id="posterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff1744;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#ff5252;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#d32f2f;stop-opacity:1" />
-    </linearGradient>
-    
-    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ffd600;stop-opacity:1" />
-    </linearGradient>
-    
-    <linearGradient id="shimmerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
-      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.7" />
-      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
-    </linearGradient>
-    
-    <radialGradient id="glowRad">
-      <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#ff1744;stop-opacity:0" />
-    </radialGradient>
-    
-    <filter id="shadowFilter">
-      <feDropShadow dx="0" dy="8" stdDeviation="4" flood-opacity="0.4"/>
-    </filter>
-  </defs>
+<linearGradient id="navyGlow" x1="0" x2="1" y1="0" y2="1">
+  <stop offset="0%" stop-color="#041231" stop-opacity="0.9"/>
+  <stop offset="100%" stop-color="#020617" stop-opacity="0.65"/>
+</linearGradient>
 
-  <!-- Background Gradient -->
-  <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0a0e27;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1a1a3e;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="400" height="600" fill="url(#bgGrad)"/>
+<radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="#6cf" stop-opacity="0.9"/>
+  <stop offset="40%" stop-color="#06f" stop-opacity="0.25"/>
+  <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+</radialGradient>
 
-  <!-- Ambient Glow Background -->
-  <circle cx="200" cy="300" r="250" fill="url(#glowRad)"/>
+<radialGradient id="redNeon" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="#ff4b6e" stop-opacity="0.95"/>
+  <stop offset="60%" stop-color="#ff0022" stop-opacity="0.25"/>
+  <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+</radialGradient>
 
-  <!-- Main Poster Container with Float Animation -->
-  <g class="poster-main">
-    <!-- Poster Frame Outer Border -->
-    <rect x="30" y="30" width="340" height="480" rx="12" ry="12" 
-          fill="url(#posterGrad)" stroke="#ffeb3b" stroke-width="3" filter="url(#shadowFilter)"/>
-    
-    <!-- Poster Inner Background -->
-    <rect x="36" y="36" width="328" height="468" rx="10" ry="10" 
-          fill="#0f0f2e" opacity="0.95"/>
-    
-    <!-- Shimmer Effect Layer -->
-    <g class="shimmer">
-      <rect x="36" y="36" width="328" height="468" rx="10" ry="10" 
-            fill="url(#shimmerGrad)" opacity="0.6"/>
-    </g>
+<!-- Filters -->
+<filter id="blurSoft" x="-50%" y="-50%" width="200%" height="200%">
+  <feGaussianBlur stdDeviation="6" result="b"/>
+  <feBlend in="SourceGraphic" in2="b" mode="normal"/>
+</filter>
+
+<filter id="glowBlue" x="-100%" y="-100%" width="300%" height="300%">
+  <feGaussianBlur stdDeviation="12" result="b"/>
+  <feMerge>
+    <feMergeNode in="b"/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+
+<filter id="glowRed" x="-100%" y="-100%" width="300%" height="300%">
+  <feGaussianBlur stdDeviation="8" result="b"/>
+  <feMerge>
+    <feMergeNode in="b"/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+
+<!-- Mask for reflection -->
+<linearGradient id="fadeMask" x1="0" x2="0" y1="0" y2="1">
+  <stop offset="0%" stop-color="#fff" stop-opacity="0.6"/>
+  <stop offset="40%" stop-color="#fff" stop-opacity="0.2"/>
+  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+</linearGradient>
+<mask id="titleFade">
+  <rect x="0" y="0" width="600" height="200" fill="url(#fadeMask)"/>
+</mask>
+
+<!-- City silhouette -->
+<linearGradient id="cityGrad" x1="0" x2="0" y1="0" y2="1">
+  <stop offset="0%" stop-color="#07122a" />
+  <stop offset="100%" stop-color="#000000" />
+</linearGradient>
+
+<!-- Reusable raindrop path -->
+<path id="raindrop" d="M0 0 L2 14" stroke-linecap="round" />
+
+<!-- Code pattern for screens -->
+<pattern id="codePattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+  <rect width="12" height="12" fill="rgba(0,0,0,0)"/>
+  <rect x="1" y="1" width="10" height="2" fill="#09f" opacity="0.95" />
+  <rect x="1" y="5" width="8" height="1.2" fill="#6cf" opacity="0.85" />
+  <rect x="1" y="8" width="9" height="1.2" fill="#05d" opacity="0.9" />
+  <rect x="1" y="10" width="6" height="1.2" fill="#0ff" opacity="0.6" />
+</pattern>
+
+<!-- Unique ID for clipping the silhouette reflection -->
+<clipPath id="silClip">
+  <rect x="120" y="160" width="360" height="440" rx="20" ry="20"/>
+</clipPath>
+
+<!-- Subtle vignette -->
+<radialGradient id="vignette" cx="50%" cy="35%" r="70%">
+  <stop offset="50%" stop-color="#000000" stop-opacity="0"/>
+  <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
+</radialGradient>
+
+<!-- Typography style as shape fallback stroke -->
+<filter id="textEmboss">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+  <feOffset dx="0" dy="2" result="off"/>
+  <feComposite in="off" in2="SourceGraphic" operator="out" result="comp"/>
+  <feMerge>
+    <feMergeNode in="comp"/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+<!-- Right vertical screen -->
+<g transform="translate(380,120) rotate(6)">
+  <rect class="screen screenPulse" x="0" y="0" width="170" height="220" rx="8" ry="8" />
+  <rect x="10" y="10" width="150" height="200" rx="4" ry="4" fill="#001122" opacity="0.75"/>
+  <!-- Code lines -->
+  <g transform="translate(18,20)" class="codeText">
+    <text x="0" y="0" style="font-size:12px; fill:#06f;">function decrypt(input) {</text>
+    <text x="0" y="18" style="font-size:12px; fill:#6cf;">  var key = deriveKey(seed);</text>
+    <text x="0" y="36" style="font-size:12px; fill:#06f;" class="flicker">  // retrieving fragments...</text>
+    <text x="0" y="54" style="font-size:12px; fill:#9ff;">  return xor(input, key);</text>
+    <text x="0" y="72" style="font-size:12px; fill:#6cf;">}</text>
+    <text x="0" y="96" style="font-size:11px; fill:#05f;" opacity="0.85">/* stream: 0x7a9b... */</text>
+    <text x="0" y="114" style="font-size:11px; fill:#0ff;" opacity="0.7">> echo $TOKEN</text>
   </g>
+  <!-- small top-right camera red dot -->
+  <circle cx="150" cy="14" r="3" fill="#ff4b6e" opacity="0.9" class="redPulse"/>
+</g>
 
-  <!-- Top Decorative Bar -->
-  <rect x="30" y="30" width="340" height="8" rx="4" fill="url(#titleGrad)"/>
-
-  <!-- Title Section with Glow -->
-  <g class="title-glow">
-    <!-- Title Background -->
-    <rect x="40" y="50" width="320" height="100" rx="8" fill="#000000" opacity="0.6"/>
-    
-    <!-- Main Title -->
-    <text x="200" y="105" font-family="Arial, sans-serif" font-size="48" font-weight="bold" 
-          text-anchor="middle" fill="url(#titleGrad)">BLOCKBUSTER</text>
-    
-    <!-- Subtitle -->
-    <text x="200" y="135" font-family="Arial, sans-serif" font-size="20" font-weight="600"
-          text-anchor="middle" fill="#ffffff">Coming This Summer</text>
+<!-- Floating transparent HUD -->
+<g transform="translate(140,90)" opacity="0.35">
+  <rect x="0" y="0" width="320" height="620" rx="20" ry="20" fill="transparent"/>
+  <g stroke="#06f" stroke-opacity="0.08" stroke-width="1">
+    <rect x="20" y="20" width="280" height="560" rx="12" ry="12" fill="none"/>
+    <line x1="20" y1="70" x2="300" y2="70" />
+    <circle cx="50" cy="100" r="18" />
   </g>
+</g>
+<!-- hood shadow -->
+<path d="M-120,120 C-70,40 -60,-20 0,-60 C60,-20 70,40 120,120 L120,160 L-120,160 Z" fill="#000814" />
+<!-- inner subtle highlight -->
+<path d="M-100,110 C-60,30 -55,-18 0,-50 C55,-18 60,30 100,110 L100,150 L-100,150 Z" fill="#071a2c" opacity="0.9" />
+<path d="M-80,100 C-45,20 -42,-10 0,-40 C42,-10 45,20 80,100 L80,140 L-80,140 Z" fill="#081827" opacity="0.95"/>
 
-  <!-- Animated Stars Decoration -->
-  <g class="star-anim">
-    <!-- Center Star -->
-    <polygon points="200,105 210,125 232,125 215,140 223,160 200,145 177,160 185,140 168,125 190,125" 
-             fill="#ffeb3b" opacity="0.9"/>
-    <!-- Side Stars -->
-    <circle cx="150" cy="100" r="3" fill="#ffd600" opacity="0.8"/>
-    <circle cx="250" cy="100" r="3" fill="#ffd600" opacity="0.8"/>
-  </g>
+<!-- face obscured -->
+<ellipse cx="0" cy="10" rx="56" ry="68" fill="#000000" />
+<!-- slight glow on edge to suggest screen lighting -->
+<path d="M-52,-12 C-30,-20 -20,-30 0,-34 C20,-30 30,-20 52,-12 L52,28 C30,10 20,6 0,4 C-20,6 -30,10 -52,28 Z" fill="#03203a" opacity="0.75" />
+<path d="M52,-12 C30,-20 20,-30 0,-34" stroke="#08a2ff" stroke-opacity="0.12" stroke-width="2" fill="none" />
 
-  <!-- Movie Poster Content Area -->
-  <g>
-    <!-- Main Visual Frame -->
-    <rect x="50" y="160" width="300" height="220" rx="8" fill="#1a1a3e" 
-          stroke="#ff5252" stroke-width="2" opacity="0.8"/>
-    
-    <!-- Spotlight Effect 1 -->
-    <circle cx="150" cy="200" r="60" fill="#ff1744" opacity="0.2"/>
-    
-    <!-- Spotlight Effect 2 -->
-    <circle cx="250" cy="240" r="50" fill="#ffeb3b" opacity="0.15"/>
-    
-    <!-- Visual Elements -->
-    <rect x="70" y="180" width="60" height="120" fill="#ff5252" opacity="0.5" rx="4"/>
-    <rect x="170" y="170" width="80" height="140" fill="#ffeb3b" opacity="0.4" rx="4"/>
-    <rect x="280" y="190" width="50" height="100" fill="#ff1744" opacity="0.6" rx="4"/>
-    
-    <!-- Grid Lines -->
-    <line x1="150" y1="160" x2="150" y2="380" stroke="#ffeb3b" stroke-width="1" opacity="0.2"/>
-    <line x1="250" y1="160" x2="250" y2="380" stroke="#ffeb3b" stroke-width="1" opacity="0.2"/>
-    <line x1="50" y1="230" x2="350" y2="230" stroke="#ff5252" stroke-width="1" opacity="0.2"/>
-    <line x1="50" y1="300" x2="350" y2="300" stroke="#ff5252" stroke-width="1" opacity="0.2"/>
-  </g>
+<!-- shoulders -->
+<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160 L160,210 L-160,210 Z" fill="#000912" />
+<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160" fill="none" stroke="#062033" stroke-width="2" opacity="0.6"/>
 
-  <!-- Details Section -->
-  <g>
-    <!-- Details Background -->
-    <rect x="40" y="390" width="320" height="100" rx="8" fill="#000000" opacity="0.5"
-          stroke="#ffeb3b" stroke-width="1" opacity="0.3"/>
-    
-    <!-- Rating with Pulse -->
-    <g class="pulse-badge">
-      <text x="200" y="420" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
-            text-anchor="middle" fill="#ffeb3b">★★★★★ 9.5/10</text>
-    </g>
-    
-    <!-- Genre -->
-    <text x="200" y="450" font-family="Arial, sans-serif" font-size="14" text-anchor="middle"
-          fill="#e0e0e0">ACTION • ADVENTURE • 2h 30m</text>
-    
-    <!-- Release Info -->
-    <text x="200" y="475" font-family="Arial, sans-serif" font-size="12" text-anchor="middle"
-          fill="#b0b0b0">Rated PG-13 • English</text>
+<!-- reflective code fragments over chest -->
+<g transform="translate(-60,50)" opacity="0.28" filter="url(#blurSoft)">
+  <rect x="0" y="0" width="120" height="40" rx="6" ry="6" fill="#00162b" />
+  <g class="codeText" transform="translate(8,18)">
+    <text x="0" y="0" style="font-size:10px; fill:#6cf;">01011010 10101010</text>
+    <text x="0" y="12" style="font-size:10px; fill:#09f; opacity:0.9;">seg_fault @ 0x007f</text>
   </g>
+</g>
+<!-- hood shadow -->
+<path d="M-120,120 C-70,40 -60,-20 0,-60 C60,-20 70,40 120,120 L120,160 L-120,160 Z" fill="#000814" />
+<!-- inner subtle highlight -->
+<path d="M-100,110 C-60,30 -55,-18 0,-50 C55,-18 60,30 100,110 L100,150 L-100,150 Z" fill="#071a2c" opacity="0.9" />
+<path d="M-80,100 C-45,20 -42,-10 0,-40 C42,-10 45,20 80,100 L80,140 L-80,140 Z" fill="#081827" opacity="0.95"/>
 
-  <!-- Bottom Accent Bar with Animation -->
-  <g class="shimmer">
-    <rect x="40" y="510" width="320" height="4" rx="2" fill="url(#titleGrad)"/>
-  </g>
+<!-- face obscured -->
+<ellipse cx="0" cy="10" rx="56" ry="68" fill="#000000" />
+<!-- slight glow on edge to suggest screen lighting -->
+<path d="M-52,-12 C-30,-20 -20,-30 0,-34 C20,-30 30,-20 52,-12 L52,28 C30,10 20,6 0,4 C-20,6 -30,10 -52,28 Z" fill="#03203a" opacity="0.75" />
+<path d="M52,-12 C30,-20 20,-30 0,-34" stroke="#08a2ff" stroke-opacity="0.12" stroke-width="2" fill="none" />
 
-  <!-- Floating Particles (Optional) -->
-  <g opacity="0.6">
-    <circle cx="60" cy="550" r="2" fill="#ffeb3b" class="pulse-badge"/>
-    <circle cx="200" cy="560" r="2" fill="#ff5252" class="pulse-badge"/>
-    <circle cx="340" cy="545" r="2" fill="#ffeb3b" class="pulse-badge"/>
-  </g>
+<!-- shoulders -->
+<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160 L160,210 L-160,210 Z" fill="#000912" />
+<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160" fill="none" stroke="#062033" stroke-width="2" opacity="0.6"/>
 
-  <!-- Badge Corner -->
-  <g class="pulse-badge">
-    <circle cx="370" cy="50" r="18" fill="#ff1744" filter="url(#shadowFilter)"/>
-    <text x="370" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
-          text-anchor="middle" fill="#ffffff">NEW</text>
+<!-- reflective code fragments over chest -->
+<g transform="translate(-60,50)" opacity="0.28" filter="url(#blurSoft)">
+  <rect x="0" y="0" width="120" height="40" rx="6" ry="6" fill="#00162b" />
+  <g class="codeText" transform="translate(8,18)">
+    <text x="0" y="0" style="font-size:10px; fill:#6cf;">01011010 10101010</text>
+    <text x="0" y="12" style="font-size:10px; fill:#09f; opacity:0.9;">seg_fault @ 0x007f</text>
   </g>
-</svg>
+</g>
+<g id="layerB" class="rainLayer2" transform="translate(0,0)">
+  <use href="#raindrop" x="60" y="-50" class="r2"/>
+  <use href="#raindrop" x="120" y="-180" class="r2"/>
+  <use href="#raindrop" x="180" y="-30" class="r2"/>
+  <use href="#raindrop" x="240" y="-140" class="r2"/>
+  <use href="#raindrop" x="300" y="-70" class="r2"/>
+  <use href="#raindrop" x="360" y="-210" class="r2"/>
+  <use href="#raindrop" x="420" y="-20" class="r2"/>
+  <use href="#raindrop" x="480" y="-150" class="r2"/>
+  <use href="#raindrop" x="540" y="-40" class="r2"/>
+</g>
+
+<g id="layerC" class="rainLayer3" transform="translate(0,0)">
+  <use href="#raindrop" x="15" y="-120" class="r3"/>
+  <use href="#raindrop" x="75" y="-60" class="r3"/>
+  <use href="#raindrop" x="135" y="-200" class="r3"/>
+  <use href="#raindrop" x="195" y="-80" class="r3"/>
+  <use href="#raindrop" x="255" y="-160" class="r3"/>
+  <use href="#raindrop" x="315" y="-40" class="r3"/>
+  <use href="#raindrop" x="375" y="-130" class="r3"/>
+  <use href="#raindrop" x="435" y="-210" class="r3"/>
+  <use href="#raindrop" x="495" y="-90" class="r3"/>
+  <use href="#raindrop" x="555" y="-170" class="r3"/>
+</g>
+<!-- Main title with dual-stroke neon effect -->
+<g>
+  <text class="titleStroke" x="0" y="0" font-size="52" text-anchor="middle" style="letter-spacing:6px;">THE HIDDEN CODE</text>
+  <text class="title" x="0" y="0">THE HIDDEN CODE</text>
+</g>
+
+<!-- Year and design credits -->
+<text class="year" x="0" y="38">2026</text>
+<text class="credit" x="0" y="64">A CINEMATIC EXPERIENCE · DIRECTED BY A. RUSSELL</text>
