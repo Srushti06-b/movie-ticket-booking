@@ -1,91 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The Hidden Code - animated thriller poster -->
+<!-- Animated Movie Poster - Cinema Masterpiece -->
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
   <defs>
-    <linearGradient id="g3" x1="0" x2="1">
-      <stop offset="0%" stop-color="#0b0f14"/>
-      <stop offset="50%" stop-color="#0f1b25">
-        <animate attributeName="stop-color" values="#0f1b25;#14232b;#0f1b25" dur="6s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="100%" stop-color="#071021"/>
+    <linearGradient id="posterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff4d4d;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#cc0000;stop-opacity:1" />
     </linearGradient>
 
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" stitchTiles="stitch" result="noise"/>
-      <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
-      <feBlend mode="overlay" in="mono" in2="SourceGraphic"/>
+    <radialGradient id="glowGradient">
+      <stop offset="0%" style="stop-color:#ffaa00;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffaa00;stop-opacity:0" />
+    </radialGradient>
+
+    <linearGradient id="shimmerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:transparent;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
+    </linearGradient>
+
+    <filter id="glowFilter">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
 
     <style>
-      .title { font: 700 40px/1 "Poppins", Arial, sans-serif; fill: #dbeafe; letter-spacing: 1px; }
-      .sub { font: 300 16px "Poppins", Arial, sans-serif; fill: #9fb4c9; }
-      .code { font: 700 22px "Poppins", Arial, sans-serif; fill: #6ee7b7; }
-      .digit { font: 700 14px monospace; fill:#6ee7b7; opacity:0.75 }
+      @keyframes shimmer {
+        0% { transform: translateX(-150%); }
+        100% { transform: translateX(150%); }
+      }
+      @keyframes glow {
+        0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 170, 0, 0.6)); }
+        50% { filter: drop-shadow(0 0 25px rgba(255, 170, 0, 1)); }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .poster-container { animation: float 4s ease-in-out infinite; }
+      .title-text { animation: glow 2.5s ease-in-out infinite; }
+      .shimmer-bar { animation: shimmer 3s linear infinite; }
+      .star-ornament { animation: rotate 6s linear infinite; }
+      .pulse-glow { animation: pulse 1.5s ease-in-out infinite; }
     </style>
   </defs>
 
-  <rect width="600" height="800" fill="url(#g3)"/>
+  <!-- Background -->
+  <rect width="600" height="800" fill="#0a0e27"/>
+  
+  <!-- Subtle background pattern -->
+  <circle cx="150" cy="100" r="200" fill="url(#glowGradient)"/>
+  <circle cx="500" cy="700" r="250" fill="url(#glowGradient)"/>
 
-  <!-- scanning lines -->
-  <g opacity="0.06" fill="#9eeadf">
-    <rect x="-200" y="0" width="1200" height="8" transform="skewY(-12)">
-      <animate attributeName="x" values="-200;0;200;-200" dur="10s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="-100" y="180" width="1200" height="6" transform="skewY(-6)">
-      <animate attributeName="x" values="200;0;-200;200" dur="14s" repeatCount="indefinite"/>
-    </rect>
+  <!-- Main Poster Container with Float Animation -->
+  <g class="poster-container">
+    <!-- Poster Frame -->
+    <rect x="40" y="50" width="520" height="680" rx="12" fill="url(#posterGradient)" stroke="#ffcc00" stroke-width="3"/>
+    
+    <!-- Poster Inner Shadow -->
+    <rect x="45" y="55" width="510" height="670" rx="10" fill="#1a1a3e" opacity="0.95"/>
+    
+    <!-- Shimmer Effect Bar -->
+    <rect x="45" y="55" width="510" height="670" rx="10" fill="url(#shimmerGradient)" class="shimmer-bar"/>
   </g>
 
-  <!-- matrix code block -->
-  <g transform="translate(40,220)">
-    <rect width="520" height="420" rx="12" fill="#071016" stroke="#ffffff" stroke-opacity="0.03"/>
-    <!-- animated 'code' characters -->
-    <g font-family="monospace" font-size="14" fill="#6ee7b7" opacity="0.9" transform="translate(18,28)">
-      <!-- generate columns of numbers with different animation delays -->
-      <g id="col">
-        <text x="0" y="0">01010110 1010 0011</text>
-      </g>
-      <g transform="translate(0,0)">
-        <text x="0" y="20" class="digit">10101001 0011 1100
-          <animate attributeName="y" values="20;0;20" dur="6s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.9;0.2;0.9" dur="6s" repeatCount="indefinite"/>
-        </text>
-        <text x="0" y="40" class="digit">11001101 1001 0010
-          <animate attributeName="y" values="40;20;40" dur="5s" repeatCount="indefinite"/>
-        </text>
-        <text x="0" y="60" class="digit">00110011 0101 1110
-          <animate attributeName="y" values="60;40;60" dur="7s" repeatCount="indefinite"/>
-        </text>
-        <text x="0" y="80" class="digit">11100011 0100 1101
-          <animate attributeName="y" values="80;60;80" dur="6.5s" repeatCount="indefinite"/>
-        </text>
-      </g>
-    </g>
-
-    <!-- spotlight rectangle -->
-    <rect x="360" y="40" width="120" height="120" rx="8" fill="#0a1420" stroke="#58ffb0" stroke-opacity="0.12">
-      <animate attributeName="x" values="360;330;360" dur="8s" repeatCount="indefinite"/>
-    </rect>
+  <!-- Movie Title Section with Glow -->
+  <g class="title-text">
+    <!-- Title Background -->
+    <rect x="50" y="60" width="500" height="140" fill="#000000" opacity="0.7" rx="8"/>
+    
+    <!-- Main Title -->
+    <text x="300" y="120" font-size="56" font-weight="bold" text-anchor="middle" fill="#ffaa00" font-family="Poppins, Arial">
+      CINEMA
+    </text>
+    <text x="300" y="170" font-size="44" font-weight="600" text-anchor="middle" fill="#ffffff" font-family="Poppins, Arial">
+      MASTERPIECE
+    </text>
   </g>
 
-  <!-- title & details -->
-  <text x="48" y="120" class="title">THE</text>
-  <text x="48" y="160" class="title">HIDDEN CODE</text>
-
-  <text x="48" y="200" class="sub">A cyber-thriller of secrets & surveillance</text>
-
-  <g transform="translate(48,660)">
-    <text class="code">Thriller • 2h 05m • ⭐ 8.0</text>
-    <text x="0" y="26" class="sub">Release: 2026-01-22 • Language: English</text>
+  <!-- Decorative Star Elements -->
+  <g class="star-ornament" style="transform-origin: 300px 230px">
+    <circle cx="280" cy="220" r="4" fill="#ffaa00"/>
+    <circle cx="320" cy="220" r="4" fill="#ffaa00"/>
+    <circle cx="300" cy="200" r="5" fill="#ffcc00"/>
   </g>
 
-  <!-- animated 'scanner' line over poster area -->
-  <rect x="36" y="200" width="528" height="420" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.02"/>
-  <rect x="-600" y="380" width="1200" height="2" fill="#6ee7b7" opacity="0.12">
-    <animate attributeName="x" values="-600;0;600;-600" dur="9s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.12;0.02;0.12" dur="9s" repeatCount="indefinite"/>
-  </rect>
+  <!-- Main Poster Visual Area -->
+  <g>
+    <!-- Poster Art Frame -->
+    <rect x="60" y="210" width="480" height="350" rx="8" fill="#2a2a5e" stroke="#ffaa00" stroke-width="2"/>
+    
+    <!-- Spotlight Effects -->
+    <circle cx="300" cy="280" r="80" fill="#ffaa00" opacity="0.15" class="pulse-glow"/>
+    <circle cx="300" cy="280" r="50" fill="#ffcc00" opacity="0.2"/>
+    
+    <!-- Movie Scene Elements (Abstract) -->
+    <rect x="80" y="230" width="70" height="100" fill="#ff6b6b" opacity="0.6" rx="4"/>
+    <rect x="250" y="250" width="100" height="120" fill="#ffaa00" opacity="0.5" rx="4"/>
+    <rect x="450" y="240" width="60" height="110" fill="#ff4d4d" opacity="0.7" rx="4"/>
+    
+    <!-- Cinematic Grid Lines -->
+    <line x1="200" y1="210" x2="200" y2="560" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
+    <line x1="400" y1="210" x2="400" y2="560" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
+    <line x1="60" y1="310" x2="540" y2="310" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
+    <line x1="60" y1="435" x2="540" y2="435" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
+  </g>
 
-  <!-- subtle grain overlay -->
-  <rect width="600" height="800" fill="#ffffff" opacity="0.01" filter="url(#grain)"/>
+  <!-- Movie Details Section -->
+  <g>
+    <!-- Details Background -->
+    <rect x="60" y="570" width="480" height="140" fill="#1a1a3e" rx="8" stroke="#ffaa00" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Rating -->
+    <text x="300" y="600" font-size="20" font-weight="700" text-anchor="middle" fill="#ffcc00" font-family="Poppins, Arial" class="pulse-glow">
+      ★★★★★ 9.5/10
+    </text>
+    
+    <!-- Genre & Duration -->
+    <text x="300" y="635" font-size="16" text-anchor="middle" fill="#e0e0e0" font-family="Poppins, Arial">
+      ACTION • THRILLER • 2h 15m
+    </text>
+    
+    <!-- Release Info -->
+    <text x="300" y="665" font-size="14" text-anchor="middle" fill="#b0b0b0" font-family="Poppins, Arial">
+      Coming Soon • English • PG-13
+    </text>
+    
+    <!-- Special Badge -->
+    <circle cx="120" cy="695" r="20" fill="#ff4d4d" opacity="0.8" class="pulse-glow"/>
+    <text x="120" y="700" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff" font-family="Poppins, Arial">
+      NEW
+    </text>
+  </g>
+
+  <!-- Bottom Border Animation -->
+  <rect x="50" y="720" width="500" height="4" rx="2" fill="#ffaa00" class="shimmer-bar"/>
+  
+  <!-- Footer Decorative Elements -->
+  <circle cx="100" cy="770" r="3" fill="#ffaa00" opacity="0.8"/>
+  <circle cx="300" cy="770" r="3" fill="#ffcc00" opacity="0.8"/>
+  <circle cx="500" cy="770" r="3" fill="#ffaa00" opacity="0.8"/>
 </svg>
