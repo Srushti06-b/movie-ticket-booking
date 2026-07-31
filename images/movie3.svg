@@ -1,196 +1,202 @@
-<linearGradient id="navyGlow" x1="0" x2="1" y1="0" y2="1">
-  <stop offset="0%" stop-color="#041231" stop-opacity="0.9"/>
-  <stop offset="100%" stop-color="#020617" stop-opacity="0.65"/>
-</linearGradient>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="-200 -200 800 1000"
+     width="800" height="1000" role="img" aria-label="The Hidden Code poster">
 
-<radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
-  <stop offset="0%" stop-color="#6cf" stop-opacity="0.9"/>
-  <stop offset="40%" stop-color="#06f" stop-opacity="0.25"/>
-  <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-</radialGradient>
+  <defs>
+    <linearGradient id="navyGlow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#041231" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0.65"/>
+    </linearGradient>
 
-<radialGradient id="redNeon" cx="50%" cy="50%" r="50%">
-  <stop offset="0%" stop-color="#ff4b6e" stop-opacity="0.95"/>
-  <stop offset="60%" stop-color="#ff0022" stop-opacity="0.25"/>
-  <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-</radialGradient>
+    <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6cf" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#06f" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
 
-<!-- Filters -->
-<filter id="blurSoft" x="-50%" y="-50%" width="200%" height="200%">
-  <feGaussianBlur stdDeviation="6" result="b"/>
-  <feBlend in="SourceGraphic" in2="b" mode="normal"/>
-</filter>
+    <radialGradient id="redNeon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff4b6e" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#ff0022" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
 
-<filter id="glowBlue" x="-100%" y="-100%" width="300%" height="300%">
-  <feGaussianBlur stdDeviation="12" result="b"/>
-  <feMerge>
-    <feMergeNode in="b"/>
-    <feMergeNode in="SourceGraphic"/>
-  </feMerge>
-</filter>
+    <!-- Filters -->
+    <filter id="blurSoft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feBlend in="SourceGraphic" in2="b" mode="normal"/>
+    </filter>
 
-<filter id="glowRed" x="-100%" y="-100%" width="300%" height="300%">
-  <feGaussianBlur stdDeviation="8" result="b"/>
-  <feMerge>
-    <feMergeNode in="b"/>
-    <feMergeNode in="SourceGraphic"/>
-  </feMerge>
-</filter>
+    <filter id="glowBlue" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
 
-<!-- Mask for reflection -->
-<linearGradient id="fadeMask" x1="0" x2="0" y1="0" y2="1">
-  <stop offset="0%" stop-color="#fff" stop-opacity="0.6"/>
-  <stop offset="40%" stop-color="#fff" stop-opacity="0.2"/>
-  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
-</linearGradient>
-<mask id="titleFade">
-  <rect x="0" y="0" width="600" height="200" fill="url(#fadeMask)"/>
-</mask>
+    <filter id="glowRed" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
 
-<!-- City silhouette -->
-<linearGradient id="cityGrad" x1="0" x2="0" y1="0" y2="1">
-  <stop offset="0%" stop-color="#07122a" />
-  <stop offset="100%" stop-color="#000000" />
-</linearGradient>
+    <!-- Mask for reflection -->
+    <linearGradient id="fadeMask" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.6"/>
+      <stop offset="40%" stop-color="#fff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="titleFade">
+      <rect x="0" y="0" width="600" height="200" fill="url(#fadeMask)"/>
+    </mask>
 
-<!-- Reusable raindrop path -->
-<path id="raindrop" d="M0 0 L2 14" stroke-linecap="round" />
+    <!-- City silhouette -->
+    <linearGradient id="cityGrad" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#07122a" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
 
-<!-- Code pattern for screens -->
-<pattern id="codePattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
-  <rect width="12" height="12" fill="rgba(0,0,0,0)"/>
-  <rect x="1" y="1" width="10" height="2" fill="#09f" opacity="0.95" />
-  <rect x="1" y="5" width="8" height="1.2" fill="#6cf" opacity="0.85" />
-  <rect x="1" y="8" width="9" height="1.2" fill="#05d" opacity="0.9" />
-  <rect x="1" y="10" width="6" height="1.2" fill="#0ff" opacity="0.6" />
-</pattern>
+    <!-- Reusable raindrop path -->
+    <path id="raindrop" d="M0 0 L2 14" stroke-linecap="round" />
 
-<!-- Unique ID for clipping the silhouette reflection -->
-<clipPath id="silClip">
-  <rect x="120" y="160" width="360" height="440" rx="20" ry="20"/>
-</clipPath>
+    <!-- Code pattern for screens -->
+    <pattern id="codePattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="transparent"/>
+      <rect x="1" y="1" width="10" height="2" fill="#09f" opacity="0.95" />
+      <rect x="1" y="5" width="8" height="1.2" fill="#6cf" opacity="0.85" />
+      <rect x="1" y="8" width="9" height="1.2" fill="#05d" opacity="0.9" />
+      <rect x="1" y="10" width="6" height="1.2" fill="#0ff" opacity="0.6" />
+    </pattern>
 
-<!-- Subtle vignette -->
-<radialGradient id="vignette" cx="50%" cy="35%" r="70%">
-  <stop offset="50%" stop-color="#000000" stop-opacity="0"/>
-  <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
-</radialGradient>
+    <!-- Unique ID for clipping the silhouette reflection -->
+    <clipPath id="silClip">
+      <rect x="120" y="160" width="360" height="440" rx="20" ry="20"/>
+    </clipPath>
 
-<!-- Typography style as shape fallback stroke -->
-<filter id="textEmboss">
-  <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
-  <feOffset dx="0" dy="2" result="off"/>
-  <feComposite in="off" in2="SourceGraphic" operator="out" result="comp"/>
-  <feMerge>
-    <feMergeNode in="comp"/>
-    <feMergeNode in="SourceGraphic"/>
-  </feMerge>
-</filter>
-<!-- Right vertical screen -->
-<g transform="translate(380,120) rotate(6)">
-  <rect class="screen screenPulse" x="0" y="0" width="170" height="220" rx="8" ry="8" />
-  <rect x="10" y="10" width="150" height="200" rx="4" ry="4" fill="#001122" opacity="0.75"/>
-  <!-- Code lines -->
-  <g transform="translate(18,20)" class="codeText">
-    <text x="0" y="0" style="font-size:12px; fill:#06f;">function decrypt(input) {</text>
-    <text x="0" y="18" style="font-size:12px; fill:#6cf;">  var key = deriveKey(seed);</text>
-    <text x="0" y="36" style="font-size:12px; fill:#06f;" class="flicker">  // retrieving fragments...</text>
-    <text x="0" y="54" style="font-size:12px; fill:#9ff;">  return xor(input, key);</text>
-    <text x="0" y="72" style="font-size:12px; fill:#6cf;">}</text>
-    <text x="0" y="96" style="font-size:11px; fill:#05f;" opacity="0.85">/* stream: 0x7a9b... */</text>
-    <text x="0" y="114" style="font-size:11px; fill:#0ff;" opacity="0.7">> echo $TOKEN</text>
+    <!-- Subtle vignette -->
+    <radialGradient id="vignette" cx="50%" cy="35%" r="70%">
+      <stop offset="50%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
+    </radialGradient>
+
+    <!-- Typography style as shape fallback stroke -->
+    <filter id="textEmboss">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+      <feOffset dx="0" dy="2" result="off"/>
+      <feComposite in="off" in2="SourceGraphic" operator="out" result="comp"/>
+      <feMerge>
+        <feMergeNode in="comp"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Right vertical screen -->
+  <g transform="translate(380,120) rotate(6)">
+    <rect class="screen screenPulse" x="0" y="0" width="170" height="220" rx="8" ry="8" />
+    <rect x="10" y="10" width="150" height="200" rx="4" ry="4" fill="#001122" opacity="0.75"/>
+    <!-- Code lines -->
+    <g transform="translate(18,20)" class="codeText">
+      <text x="0" y="0" style="font-size:12px; fill:#06f;">function decrypt(input) {</text>
+      <text x="0" y="18" style="font-size:12px; fill:#6cf;">  var key = deriveKey(seed);</text>
+      <text x="0" y="36" style="font-size:12px; fill:#06f;" class="flicker">  // retrieving fragments...</text>
+      <text x="0" y="54" style="font-size:12px; fill:#9ff;">  return xor(input, key);</text>
+      <text x="0" y="72" style="font-size:12px; fill:#6cf;">}</text>
+      <text x="0" y="96" style="font-size:11px; fill:#05f;" opacity="0.85">/* stream: 0x7a9b... */</text>
+      <text x="0" y="114" style="font-size:11px; fill:#0ff;" opacity="0.7">> echo $TOKEN</text>
+    </g>
+    <!-- small top-right camera red dot -->
+    <circle cx="150" cy="14" r="3" fill="#ff4b6e" opacity="0.9" class="redPulse"/>
   </g>
-  <!-- small top-right camera red dot -->
-  <circle cx="150" cy="14" r="3" fill="#ff4b6e" opacity="0.9" class="redPulse"/>
-</g>
 
-<!-- Floating transparent HUD -->
-<g transform="translate(140,90)" opacity="0.35">
-  <rect x="0" y="0" width="320" height="620" rx="20" ry="20" fill="transparent"/>
-  <g stroke="#06f" stroke-opacity="0.08" stroke-width="1">
-    <rect x="20" y="20" width="280" height="560" rx="12" ry="12" fill="none"/>
-    <line x1="20" y1="70" x2="300" y2="70" />
-    <circle cx="50" cy="100" r="18" />
+  <!-- Floating transparent HUD -->
+  <g transform="translate(140,90)" opacity="0.35">
+    <rect x="0" y="0" width="320" height="620" rx="20" ry="20" fill="transparent"/>
+    <g stroke="#06f" stroke-opacity="0.08" stroke-width="1">
+      <rect x="20" y="20" width="280" height="560" rx="12" ry="12" fill="none"/>
+      <line x1="20" y1="70" x2="300" y2="70" />
+      <circle cx="50" cy="100" r="18" />
+    </g>
   </g>
-</g>
-<!-- hood shadow -->
-<path d="M-120,120 C-70,40 -60,-20 0,-60 C60,-20 70,40 120,120 L120,160 L-120,160 Z" fill="#000814" />
-<!-- inner subtle highlight -->
-<path d="M-100,110 C-60,30 -55,-18 0,-50 C55,-18 60,30 100,110 L100,150 L-100,150 Z" fill="#071a2c" opacity="0.9" />
-<path d="M-80,100 C-45,20 -42,-10 0,-40 C42,-10 45,20 80,100 L80,140 L-80,140 Z" fill="#081827" opacity="0.95"/>
 
-<!-- face obscured -->
-<ellipse cx="0" cy="10" rx="56" ry="68" fill="#000000" />
-<!-- slight glow on edge to suggest screen lighting -->
-<path d="M-52,-12 C-30,-20 -20,-30 0,-34 C20,-30 30,-20 52,-12 L52,28 C30,10 20,6 0,4 C-20,6 -30,10 -52,28 Z" fill="#03203a" opacity="0.75" />
-<path d="M52,-12 C30,-20 20,-30 0,-34" stroke="#08a2ff" stroke-opacity="0.12" stroke-width="2" fill="none" />
+  <!-- hood shadow -->
+  <path d="M-120,120 C-70,40 -60,-20 0,-60 C60,-20 70,40 120,120 L120,160 L-120,160 Z" fill="#000814" />
+  <!-- inner subtle highlight -->
+  <path d="M-100,110 C-60,30 -55,-18 0,-50 C55,-18 60,30 100,110 L100,150 L-100,150 Z" fill="#071a2c" opacity="0.9" />
+  <path d="M-80,100 C-45,20 -42,-10 0,-40 C42,-10 45,20 80,100 L80,140 L-80,140 Z" fill="#081827" opacity="0.95"/>
 
-<!-- shoulders -->
-<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160 L160,210 L-160,210 Z" fill="#000912" />
-<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160" fill="none" stroke="#062033" stroke-width="2" opacity="0.6"/>
+  <!-- face obscured -->
+  <ellipse cx="0" cy="10" rx="56" ry="68" fill="#000000" />
+  <!-- slight glow on edge to suggest screen lighting -->
+  <path d="M-52,-12 C-30,-20 -20,-30 0,-34 C20,-30 30,-20 52,-12 L52,28 C30,10 20,6 0,4 C-20,6 -30,10 -52,28 Z" fill="#03203a" opacity="0.75" />
+  <path d="M52,-12 C30,-20 20,-30 0,-34" stroke="#08a2ff" stroke-opacity="0.12" stroke-width="2" fill="none" />
 
-<!-- reflective code fragments over chest -->
-<g transform="translate(-60,50)" opacity="0.28" filter="url(#blurSoft)">
-  <rect x="0" y="0" width="120" height="40" rx="6" ry="6" fill="#00162b" />
-  <g class="codeText" transform="translate(8,18)">
-    <text x="0" y="0" style="font-size:10px; fill:#6cf;">01011010 10101010</text>
-    <text x="0" y="12" style="font-size:10px; fill:#09f; opacity:0.9;">seg_fault @ 0x007f</text>
+  <!-- shoulders -->
+  <path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160 L160,210 L-160,210 Z" fill="#000912" />
+  <path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160" fill="none" stroke="#062033" stroke-width="2" opacity="0.6"/>
+
+  <!-- reflective code fragments over chest -->
+  <g transform="translate(-60,50)" opacity="0.28" filter="url(#blurSoft)">
+    <rect x="0" y="0" width="120" height="40" rx="6" ry="6" fill="#00162b" />
+    <g class="codeText" transform="translate(8,18)">
+      <text x="0" y="0" style="font-size:10px; fill:#6cf;">01011010 10101010</text>
+      <text x="0" y="12" style="font-size:10px; fill:#09f; opacity:0.9;">seg_fault @ 0x007f</text>
+    </g>
   </g>
-</g>
-<!-- hood shadow -->
-<path d="M-120,120 C-70,40 -60,-20 0,-60 C60,-20 70,40 120,120 L120,160 L-120,160 Z" fill="#000814" />
-<!-- inner subtle highlight -->
-<path d="M-100,110 C-60,30 -55,-18 0,-50 C55,-18 60,30 100,110 L100,150 L-100,150 Z" fill="#071a2c" opacity="0.9" />
-<path d="M-80,100 C-45,20 -42,-10 0,-40 C42,-10 45,20 80,100 L80,140 L-80,140 Z" fill="#081827" opacity="0.95"/>
 
-<!-- face obscured -->
-<ellipse cx="0" cy="10" rx="56" ry="68" fill="#000000" />
-<!-- slight glow on edge to suggest screen lighting -->
-<path d="M-52,-12 C-30,-20 -20,-30 0,-34 C20,-30 30,-20 52,-12 L52,28 C30,10 20,6 0,4 C-20,6 -30,10 -52,28 Z" fill="#03203a" opacity="0.75" />
-<path d="M52,-12 C30,-20 20,-30 0,-34" stroke="#08a2ff" stroke-opacity="0.12" stroke-width="2" fill="none" />
-
-<!-- shoulders -->
-<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160 L160,210 L-160,210 Z" fill="#000912" />
-<path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160" fill="none" stroke="#062033" stroke-width="2" opacity="0.6"/>
-
-<!-- reflective code fragments over chest -->
-<g transform="translate(-60,50)" opacity="0.28" filter="url(#blurSoft)">
-  <rect x="0" y="0" width="120" height="40" rx="6" ry="6" fill="#00162b" />
-  <g class="codeText" transform="translate(8,18)">
-    <text x="0" y="0" style="font-size:10px; fill:#6cf;">01011010 10101010</text>
-    <text x="0" y="12" style="font-size:10px; fill:#09f; opacity:0.9;">seg_fault @ 0x007f</text>
+  <!-- (Repeated group in original left as-is) -->
+  <path d="M-120,120 C-70,40 -60,-20 0,-60 C60,-20 70,40 120,120 L120,160 L-120,160 Z" fill="#000814" />
+  <path d="M-100,110 C-60,30 -55,-18 0,-50 C55,-18 60,30 100,110 L100,150 L-100,150 Z" fill="#071a2c" opacity="0.9" />
+  <path d="M-80,100 C-45,20 -42,-10 0,-40 C42,-10 45,20 80,100 L80,140 L-80,140 Z" fill="#081827" opacity="0.95"/>
+  <ellipse cx="0" cy="10" rx="56" ry="68" fill="#000000" />
+  <path d="M-52,-12 C-30,-20 -20,-30 0,-34 C20,-30 30,-20 52,-12 L52,28 C30,10 20,6 0,4 C-20,6 -30,10 -52,28 Z" fill="#03203a" opacity="0.75" />
+  <path d="M52,-12 C30,-20 20,-30 0,-34" stroke="#08a2ff" stroke-opacity="0.12" stroke-width="2" fill="none" />
+  <path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160 L160,210 L-160,210 Z" fill="#000912" />
+  <path d="M-160,160 C-140,110 -120,90 -70,120 C-60,128 60,128 70,120 C120,90 140,110 160,160" fill="none" stroke="#062033" stroke-width="2" opacity="0.6"/>
+  <g transform="translate(-60,50)" opacity="0.28" filter="url(#blurSoft)">
+    <rect x="0" y="0" width="120" height="40" rx="6" ry="6" fill="#00162b" />
+    <g class="codeText" transform="translate(8,18)">
+      <text x="0" y="0" style="font-size:10px; fill:#6cf;">01011010 10101010</text>
+      <text x="0" y="12" style="font-size:10px; fill:#09f; opacity:0.9;">seg_fault @ 0x007f</text>
+    </g>
   </g>
-</g>
-<g id="layerB" class="rainLayer2" transform="translate(0,0)">
-  <use href="#raindrop" x="60" y="-50" class="r2"/>
-  <use href="#raindrop" x="120" y="-180" class="r2"/>
-  <use href="#raindrop" x="180" y="-30" class="r2"/>
-  <use href="#raindrop" x="240" y="-140" class="r2"/>
-  <use href="#raindrop" x="300" y="-70" class="r2"/>
-  <use href="#raindrop" x="360" y="-210" class="r2"/>
-  <use href="#raindrop" x="420" y="-20" class="r2"/>
-  <use href="#raindrop" x="480" y="-150" class="r2"/>
-  <use href="#raindrop" x="540" y="-40" class="r2"/>
-</g>
 
-<g id="layerC" class="rainLayer3" transform="translate(0,0)">
-  <use href="#raindrop" x="15" y="-120" class="r3"/>
-  <use href="#raindrop" x="75" y="-60" class="r3"/>
-  <use href="#raindrop" x="135" y="-200" class="r3"/>
-  <use href="#raindrop" x="195" y="-80" class="r3"/>
-  <use href="#raindrop" x="255" y="-160" class="r3"/>
-  <use href="#raindrop" x="315" y="-40" class="r3"/>
-  <use href="#raindrop" x="375" y="-130" class="r3"/>
-  <use href="#raindrop" x="435" y="-210" class="r3"/>
-  <use href="#raindrop" x="495" y="-90" class="r3"/>
-  <use href="#raindrop" x="555" y="-170" class="r3"/>
-</g>
-<!-- Main title with dual-stroke neon effect -->
-<g>
-  <text class="titleStroke" x="0" y="0" font-size="52" text-anchor="middle" style="letter-spacing:6px;">THE HIDDEN CODE</text>
-  <text class="title" x="0" y="0">THE HIDDEN CODE</text>
-</g>
+  <g id="layerB" class="rainLayer2" transform="translate(0,0)">
+    <use xlink:href="#raindrop" href="#raindrop" x="60" y="-50" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="120" y="-180" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="180" y="-30" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="240" y="-140" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="300" y="-70" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="360" y="-210" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="420" y="-20" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="480" y="-150" class="r2"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="540" y="-40" class="r2"/>
+  </g>
 
-<!-- Year and design credits -->
-<text class="year" x="0" y="38">2026</text>
-<text class="credit" x="0" y="64">A CINEMATIC EXPERIENCE · DIRECTED BY A. RUSSELL</text>
+  <g id="layerC" class="rainLayer3" transform="translate(0,0)">
+    <use xlink:href="#raindrop" href="#raindrop" x="15" y="-120" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="75" y="-60" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="135" y="-200" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="195" y="-80" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="255" y="-160" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="315" y="-40" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="375" y="-130" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="435" y="-210" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="495" y="-90" class="r3"/>
+    <use xlink:href="#raindrop" href="#raindrop" x="555" y="-170" class="r3"/>
+  </g>
+
+  <!-- Main title with dual-stroke neon effect -->
+  <g>
+    <text class="titleStroke" x="0" y="0" font-size="52" text-anchor="middle" style="letter-spacing:6px;">THE HIDDEN CODE</text>
+    <text class="title" x="0" y="0">THE HIDDEN CODE</text>
+  </g>
+
+  <!-- Year and design credits -->
+  <text class="year" x="0" y="38">2026</text>
+  <text class="credit" x="0" y="64">A CINEMATIC EXPERIENCE · DIRECTED BY A. RUSSELL</text>
+
+</svg>
