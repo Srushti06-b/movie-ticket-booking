@@ -1,154 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Animated Movie Poster - Cinema Masterpiece -->
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
   <defs>
-    <linearGradient id="posterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff4d4d;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#ff6b6b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#cc0000;stop-opacity:1" />
-    </linearGradient>
-
-    <radialGradient id="glowGradient">
-      <stop offset="0%" style="stop-color:#ffaa00;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#ffaa00;stop-opacity:0" />
-    </radialGradient>
-
-    <linearGradient id="shimmerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:transparent;stop-opacity:0" />
-      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.8" />
-      <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
-    </linearGradient>
-
-    <filter id="glowFilter">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
     <style>
-      @keyframes shimmer {
-        0% { transform: translateX(-150%); }
-        100% { transform: translateX(150%); }
+      @keyframes shimmerEffect {
+        0% { transform: translateX(-100%); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
       }
+      
       @keyframes glow {
-        0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 170, 0, 0.6)); }
-        50% { filter: drop-shadow(0 0 25px rgba(255, 170, 0, 1)); }
+        0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 107, 107, 0.5)); }
+        50% { filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.9)); }
       }
+      
       @keyframes float {
         0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
+        50% { transform: translateY(-8px); }
       }
-      @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.6; }
-      }
-      @keyframes rotate {
+      
+      @keyframes rotateStar {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      .poster-container { animation: float 4s ease-in-out infinite; }
-      .title-text { animation: glow 2.5s ease-in-out infinite; }
-      .shimmer-bar { animation: shimmer 3s linear infinite; }
-      .star-ornament { animation: rotate 6s linear infinite; }
-      .pulse-glow { animation: pulse 1.5s ease-in-out infinite; }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.05); }
+      }
+      
+      @keyframes borderFlow {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      .poster-main { animation: float 3s ease-in-out infinite; }
+      .title-glow { animation: glow 2s ease-in-out infinite; }
+      .shimmer { animation: shimmerEffect 2.5s infinite; }
+      .star-anim { animation: rotateStar 4s linear infinite; transform-origin: 200px 120px; }
+      .pulse-badge { animation: pulse 1.5s ease-in-out infinite; }
     </style>
+    
+    <!-- Gradients -->
+    <linearGradient id="posterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff1744;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff5252;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d32f2f;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd600;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="shimmerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+    
+    <radialGradient id="glowRad">
+      <stop offset="0%" style="stop-color:#ffeb3b;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ff1744;stop-opacity:0" />
+    </radialGradient>
+    
+    <filter id="shadowFilter">
+      <feDropShadow dx="0" dy="8" stdDeviation="4" flood-opacity="0.4"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="600" height="800" fill="#0a0e27"/>
-  
-  <!-- Subtle background pattern -->
-  <circle cx="150" cy="100" r="200" fill="url(#glowGradient)"/>
-  <circle cx="500" cy="700" r="250" fill="url(#glowGradient)"/>
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a3e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="600" fill="url(#bgGrad)"/>
+
+  <!-- Ambient Glow Background -->
+  <circle cx="200" cy="300" r="250" fill="url(#glowRad)"/>
 
   <!-- Main Poster Container with Float Animation -->
-  <g class="poster-container">
-    <!-- Poster Frame -->
-    <rect x="40" y="50" width="520" height="680" rx="12" fill="url(#posterGradient)" stroke="#ffcc00" stroke-width="3"/>
+  <g class="poster-main">
+    <!-- Poster Frame Outer Border -->
+    <rect x="30" y="30" width="340" height="480" rx="12" ry="12" 
+          fill="url(#posterGrad)" stroke="#ffeb3b" stroke-width="3" filter="url(#shadowFilter)"/>
     
-    <!-- Poster Inner Shadow -->
-    <rect x="45" y="55" width="510" height="670" rx="10" fill="#1a1a3e" opacity="0.95"/>
+    <!-- Poster Inner Background -->
+    <rect x="36" y="36" width="328" height="468" rx="10" ry="10" 
+          fill="#0f0f2e" opacity="0.95"/>
     
-    <!-- Shimmer Effect Bar -->
-    <rect x="45" y="55" width="510" height="670" rx="10" fill="url(#shimmerGradient)" class="shimmer-bar"/>
+    <!-- Shimmer Effect Layer -->
+    <g class="shimmer">
+      <rect x="36" y="36" width="328" height="468" rx="10" ry="10" 
+            fill="url(#shimmerGrad)" opacity="0.6"/>
+    </g>
   </g>
 
-  <!-- Movie Title Section with Glow -->
-  <g class="title-text">
+  <!-- Top Decorative Bar -->
+  <rect x="30" y="30" width="340" height="8" rx="4" fill="url(#titleGrad)"/>
+
+  <!-- Title Section with Glow -->
+  <g class="title-glow">
     <!-- Title Background -->
-    <rect x="50" y="60" width="500" height="140" fill="#000000" opacity="0.7" rx="8"/>
+    <rect x="40" y="50" width="320" height="100" rx="8" fill="#000000" opacity="0.6"/>
     
     <!-- Main Title -->
-    <text x="300" y="120" font-size="56" font-weight="bold" text-anchor="middle" fill="#ffaa00" font-family="Poppins, Arial">
-      CINEMA
-    </text>
-    <text x="300" y="170" font-size="44" font-weight="600" text-anchor="middle" fill="#ffffff" font-family="Poppins, Arial">
-      MASTERPIECE
-    </text>
+    <text x="200" y="105" font-family="Arial, sans-serif" font-size="48" font-weight="bold" 
+          text-anchor="middle" fill="url(#titleGrad)">BLOCKBUSTER</text>
+    
+    <!-- Subtitle -->
+    <text x="200" y="135" font-family="Arial, sans-serif" font-size="20" font-weight="600"
+          text-anchor="middle" fill="#ffffff">Coming This Summer</text>
   </g>
 
-  <!-- Decorative Star Elements -->
-  <g class="star-ornament" style="transform-origin: 300px 230px">
-    <circle cx="280" cy="220" r="4" fill="#ffaa00"/>
-    <circle cx="320" cy="220" r="4" fill="#ffaa00"/>
-    <circle cx="300" cy="200" r="5" fill="#ffcc00"/>
+  <!-- Animated Stars Decoration -->
+  <g class="star-anim">
+    <!-- Center Star -->
+    <polygon points="200,105 210,125 232,125 215,140 223,160 200,145 177,160 185,140 168,125 190,125" 
+             fill="#ffeb3b" opacity="0.9"/>
+    <!-- Side Stars -->
+    <circle cx="150" cy="100" r="3" fill="#ffd600" opacity="0.8"/>
+    <circle cx="250" cy="100" r="3" fill="#ffd600" opacity="0.8"/>
   </g>
 
-  <!-- Main Poster Visual Area -->
+  <!-- Movie Poster Content Area -->
   <g>
-    <!-- Poster Art Frame -->
-    <rect x="60" y="210" width="480" height="350" rx="8" fill="#2a2a5e" stroke="#ffaa00" stroke-width="2"/>
+    <!-- Main Visual Frame -->
+    <rect x="50" y="160" width="300" height="220" rx="8" fill="#1a1a3e" 
+          stroke="#ff5252" stroke-width="2" opacity="0.8"/>
     
-    <!-- Spotlight Effects -->
-    <circle cx="300" cy="280" r="80" fill="#ffaa00" opacity="0.15" class="pulse-glow"/>
-    <circle cx="300" cy="280" r="50" fill="#ffcc00" opacity="0.2"/>
+    <!-- Spotlight Effect 1 -->
+    <circle cx="150" cy="200" r="60" fill="#ff1744" opacity="0.2"/>
     
-    <!-- Movie Scene Elements (Abstract) -->
-    <rect x="80" y="230" width="70" height="100" fill="#ff6b6b" opacity="0.6" rx="4"/>
-    <rect x="250" y="250" width="100" height="120" fill="#ffaa00" opacity="0.5" rx="4"/>
-    <rect x="450" y="240" width="60" height="110" fill="#ff4d4d" opacity="0.7" rx="4"/>
+    <!-- Spotlight Effect 2 -->
+    <circle cx="250" cy="240" r="50" fill="#ffeb3b" opacity="0.15"/>
     
-    <!-- Cinematic Grid Lines -->
-    <line x1="200" y1="210" x2="200" y2="560" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
-    <line x1="400" y1="210" x2="400" y2="560" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
-    <line x1="60" y1="310" x2="540" y2="310" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
-    <line x1="60" y1="435" x2="540" y2="435" stroke="#ffaa00" stroke-width="1" opacity="0.3"/>
+    <!-- Visual Elements -->
+    <rect x="70" y="180" width="60" height="120" fill="#ff5252" opacity="0.5" rx="4"/>
+    <rect x="170" y="170" width="80" height="140" fill="#ffeb3b" opacity="0.4" rx="4"/>
+    <rect x="280" y="190" width="50" height="100" fill="#ff1744" opacity="0.6" rx="4"/>
+    
+    <!-- Grid Lines -->
+    <line x1="150" y1="160" x2="150" y2="380" stroke="#ffeb3b" stroke-width="1" opacity="0.2"/>
+    <line x1="250" y1="160" x2="250" y2="380" stroke="#ffeb3b" stroke-width="1" opacity="0.2"/>
+    <line x1="50" y1="230" x2="350" y2="230" stroke="#ff5252" stroke-width="1" opacity="0.2"/>
+    <line x1="50" y1="300" x2="350" y2="300" stroke="#ff5252" stroke-width="1" opacity="0.2"/>
   </g>
 
-  <!-- Movie Details Section -->
+  <!-- Details Section -->
   <g>
     <!-- Details Background -->
-    <rect x="60" y="570" width="480" height="140" fill="#1a1a3e" rx="8" stroke="#ffaa00" stroke-width="1" opacity="0.5"/>
+    <rect x="40" y="390" width="320" height="100" rx="8" fill="#000000" opacity="0.5"
+          stroke="#ffeb3b" stroke-width="1" opacity="0.3"/>
     
-    <!-- Rating -->
-    <text x="300" y="600" font-size="20" font-weight="700" text-anchor="middle" fill="#ffcc00" font-family="Poppins, Arial" class="pulse-glow">
-      ★★★★★ 9.5/10
-    </text>
+    <!-- Rating with Pulse -->
+    <g class="pulse-badge">
+      <text x="200" y="420" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
+            text-anchor="middle" fill="#ffeb3b">★★★★★ 9.5/10</text>
+    </g>
     
-    <!-- Genre & Duration -->
-    <text x="300" y="635" font-size="16" text-anchor="middle" fill="#e0e0e0" font-family="Poppins, Arial">
-      ACTION • THRILLER • 2h 15m
-    </text>
+    <!-- Genre -->
+    <text x="200" y="450" font-family="Arial, sans-serif" font-size="14" text-anchor="middle"
+          fill="#e0e0e0">ACTION • ADVENTURE • 2h 30m</text>
     
     <!-- Release Info -->
-    <text x="300" y="665" font-size="14" text-anchor="middle" fill="#b0b0b0" font-family="Poppins, Arial">
-      Coming Soon • English • PG-13
-    </text>
-    
-    <!-- Special Badge -->
-    <circle cx="120" cy="695" r="20" fill="#ff4d4d" opacity="0.8" class="pulse-glow"/>
-    <text x="120" y="700" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff" font-family="Poppins, Arial">
-      NEW
-    </text>
+    <text x="200" y="475" font-family="Arial, sans-serif" font-size="12" text-anchor="middle"
+          fill="#b0b0b0">Rated PG-13 • English</text>
   </g>
 
-  <!-- Bottom Border Animation -->
-  <rect x="50" y="720" width="500" height="4" rx="2" fill="#ffaa00" class="shimmer-bar"/>
-  
-  <!-- Footer Decorative Elements -->
-  <circle cx="100" cy="770" r="3" fill="#ffaa00" opacity="0.8"/>
-  <circle cx="300" cy="770" r="3" fill="#ffcc00" opacity="0.8"/>
-  <circle cx="500" cy="770" r="3" fill="#ffaa00" opacity="0.8"/>
+  <!-- Bottom Accent Bar with Animation -->
+  <g class="shimmer">
+    <rect x="40" y="510" width="320" height="4" rx="2" fill="url(#titleGrad)"/>
+  </g>
+
+  <!-- Floating Particles (Optional) -->
+  <g opacity="0.6">
+    <circle cx="60" cy="550" r="2" fill="#ffeb3b" class="pulse-badge"/>
+    <circle cx="200" cy="560" r="2" fill="#ff5252" class="pulse-badge"/>
+    <circle cx="340" cy="545" r="2" fill="#ffeb3b" class="pulse-badge"/>
+  </g>
+
+  <!-- Badge Corner -->
+  <g class="pulse-badge">
+    <circle cx="370" cy="50" r="18" fill="#ff1744" filter="url(#shadowFilter)"/>
+    <text x="370" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="bold"
+          text-anchor="middle" fill="#ffffff">NEW</text>
+  </g>
 </svg>
